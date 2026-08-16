@@ -341,6 +341,7 @@ function changeQuantity(id, amount) {
   renderCart();
 }
 
+
 /* =====================================================
    RENDER CART
 ===================================================== */
@@ -519,6 +520,100 @@ document.querySelectorAll(".filter-btn").forEach((button) => {
     renderProducts(getCurrentProducts());
   });
 });
+
+
+/* =========================================
+   FLASH SALE COUNTDOWN
+========================================= */
+
+// Sale will end after 2 days
+const saleEndTime =
+    new Date().getTime() +
+    (2 * 24 * 60 * 60 * 1000);
+
+
+function updateSaleTimer() {
+
+    const now = new Date().getTime();
+
+    const distance =
+        saleEndTime - now;
+
+
+    if (distance <= 0) {
+
+        document.getElementById("sale-days").textContent = "00";
+        document.getElementById("sale-hours").textContent = "00";
+        document.getElementById("sale-minutes").textContent = "00";
+        document.getElementById("sale-seconds").textContent = "00";
+
+        return;
+    }
+
+
+    const days =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (distance %
+                (1000 * 60 * 60 * 24))
+            /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (distance %
+                (1000 * 60 * 60))
+            /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (distance %
+                (1000 * 60))
+            /
+            1000
+        );
+
+
+    document.getElementById("sale-days")
+        .textContent =
+        String(days).padStart(2, "0");
+
+
+    document.getElementById("sale-hours")
+        .textContent =
+        String(hours).padStart(2, "0");
+
+
+    document.getElementById("sale-minutes")
+        .textContent =
+        String(minutes).padStart(2, "0");
+
+
+    document.getElementById("sale-seconds")
+        .textContent =
+        String(seconds).padStart(2, "0");
+
+}
+
+
+updateSaleTimer();
+
+setInterval(updateSaleTimer, 1000);
+
+/* =====================================================
+   FLASH SALE
+===================================================== */
 
 /* =====================================================
    CATEGORY CARDS
