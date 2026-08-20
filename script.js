@@ -605,7 +605,34 @@ function updateSaleTimer() {
         String(seconds).padStart(2, "0");
 
 }
+// extra flash sale product
 
+const flashBtn = document.getElementById("viewFlashBtn");
+const extraProducts = document.getElementById("extraProducts");
+
+flashBtn.addEventListener("click", function () {
+
+    // Products show
+    extraProducts.classList.add("show");
+
+    // Button hide animation
+    flashBtn.style.opacity = "0";
+    flashBtn.style.transform = "translateY(20px)";
+
+    // সম্পূর্ণভাবে button hide
+    setTimeout(() => {
+        flashBtn.style.display = "none";
+    }, 400);
+
+    // নতুন products-এর দিকে smooth scroll
+    setTimeout(() => {
+        extraProducts.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    }, 300);
+
+});
 
 updateSaleTimer();
 

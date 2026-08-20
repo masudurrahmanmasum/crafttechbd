@@ -1,955 +1,946 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Craft Tech BD</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="./image/fabicon.jpg">
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./image/fabicon.jpg"
+    />
+    <link rel="stylesheet" href="style.css" />
     <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
 
-<body>
+  <body>
+    <!-- ================= HEADER ================= -->
 
-<!-- ================= HEADER ================= -->
-
-<header class="header" id="header">
-
-    <div class="container nav-container">
-
+    <header class="header" id="header">
+      <div class="container nav-container">
         <a href="#home" class="logo">
-             <img src="./image/craft_logo.png" alt="">
+          <img src="./image/craft_logo.png" alt="" />
         </a>
 
         <nav class="navbar" id="navbar">
-            <a href="#home">হোম পেইজ</a>
-            <a href="#categories">ক্যাটাগরি</a>
-            <a href="#products">প্রোডাক্ট</a>
-            <a href="#about">পরিচিতি</a>
-            <a href="#contact">যোগাযোগ</a> 
+          <a href="#home">হোম পেইজ</a>
+          <a href="#categories">ক্যাটাগরি</a>
+          <a href="#products">প্রোডাক্ট</a>
+          <a href="#about">পরিচিতি</a>
+          <a href="#contact">যোগাযোগ</a>
         </nav>
 
         <div class="nav-actions">
+          <button class="icon-btn" id="searchBtn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
 
-            <button class="icon-btn" id="searchBtn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
+          <button class="icon-btn" id="wishlistBtn">
+            <i class="fa-regular fa-heart"></i>
+            <span class="badge" id="wishlistCount">0</span>
+          </button>
 
-            <button class="icon-btn" id="wishlistBtn">
-                <i class="fa-regular fa-heart"></i>
-                <span class="badge" id="wishlistCount">0</span>
-            </button>
+          <button class="icon-btn cart-btn" id="cartBtn">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="badge" id="cartCount">0</span>
+          </button>
 
-            <button class="icon-btn cart-btn" id="cartBtn">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="badge" id="cartCount">0</span>
-            </button>
-
-            <button class="menu-btn" id="menuBtn">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
+          <button class="menu-btn" id="menuBtn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </div>
+      </div>
+    </header>
 
-    </div>
+    <!-- ================= SEARCH BOX ================= -->
 
-</header>
-
-
-<!-- ================= SEARCH BOX ================= -->
-
-<div class="search-overlay" id="searchOverlay">
-
-    <div class="search-box">
-
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-box">
         <button class="close-search" id="closeSearch">
-            <i class="fa-solid fa-xmark"></i>
+          <i class="fa-solid fa-xmark"></i>
         </button>
 
         <h2>আপনার প্রোডাক্ট খুজুন</h2>
 
         <div class="search-input">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search for products..."
-            >
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for products..."
+          />
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-
+      </div>
     </div>
 
-</div>
+    <!-- ================= HERO ================= -->
 
-
-<!-- ================= HERO ================= -->
-
-<section class="hero section" id="home">
-
-    <div class="container hero-container">
-
+    <section class="hero section" id="home">
+      <div class="container hero-container">
         <div class="hero-content reveal">
+          <span class="hero-tag"> ✨ আগস্টের নতুন কালেকশন ২০২৬ </span>
 
-            <span class="hero-tag">
-                ✨ আগস্টের নতুন কালেকশন ২০২৬
-            </span>
+          <h1>
+            ইউনিক প্রোডাক্ট
+            <span>আপনার অপেক্ষায়</span>
+          </h1>
 
-            <h1>
-                ইউনিক প্রোডাক্ট 
-                <span>আপনার অপেক্ষায়</span>
-            </h1>
+          <p>
+            ক্রাফট এবং গ্যাজেট এর রাজ্যে আপনাকে স্বাগতম। রিজনেবল প্রাইসে
+            প্রিমিয়াম সব কালেকশন দেখতে স্ক্রল করুন
+          </p>
 
-            <p>
-                ক্রাফট এবং গ্যাজেট এর রাজ্যে আপনাকে স্বাগতম। রিজনেবল প্রাইসে প্রিমিয়াম সব কালেকশন দেখতে স্ক্রল করুন
-            </p>
+          <div class="hero-buttons">
+            <a href="#products" class="btn primary-btn">
+              Shop Now
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
 
-            <div class="hero-buttons">
-
-                <a href="#products" class="btn primary-btn">
-                    Shop Now
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-
-                <a href="#categories" class="btn secondary-btn">
-                    Explore Categories
-                </a>
-
-            </div>
-
+            <a href="#categories" class="btn secondary-btn">
+              Explore Categories
+            </a>
+          </div>
         </div>
 
         <div class="hero-image reveal">
+          <div class="hero-circle"></div>
 
-            <div class="hero-circle"></div>
+          <img
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80"
+            alt="Shopping"
+          />
 
-            <img
-                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80"
-                alt="Shopping"
-            >
-
-            <div class="floating-card">
-                <i class="fa-solid fa-truck-fast"></i>
-                <div>
-                    <strong>ফ্রি ডেলিভারি</strong>
-                    <small class="delivery">নরসিংদী সদরের ভিতরে</small>
-                </div>
+          <div class="floating-card">
+            <i class="fa-solid fa-truck-fast"></i>
+            <div>
+              <strong>ফ্রি ডেলিভারি</strong>
+              <small class="delivery">নরসিংদী সদরের ভিতরে</small>
             </div>
-
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- ================= FLASH SALE ================= -->
 
-</section>
-
-<!-- ================= FLASH SALE ================= -->
-
-
-<!-- ================= FLASH SALE ================= -->
+    <!-- ================= FLASH SALE ================= -->
     <section class="flash-sale">
+      <!-- Decorative background elements -->
+      <span class="sale-shape sale-shape-1"></span>
+      <span class="sale-shape sale-shape-2"></span>
+      <span class="sale-shape sale-shape-3"></span>
 
-    <!-- Decorative background elements -->
-    <span class="sale-shape sale-shape-1"></span>
-    <span class="sale-shape sale-shape-2"></span>
-    <span class="sale-shape sale-shape-3"></span>
-
-    <div class="container">
-
+      <div class="container">
         <!-- Sale Header -->
         <div class="flash-sale-header">
-
-            <div class="sale-title-area">
-
-                <div class="sale-label">
-                    <span class="sale-fire">⚡</span>
-                    FLASH SALE
-                </div>
-
-                <h2>
-                    আজকের <span>বিশেষ অফার!</span>
-                </h2>
-
-                <p>
-                    সীমিত সময়ের জন্য নির্বাচিত পণ্যে পাচ্ছেন
-                    দারুণ সব ডিসকাউন্ট।
-                </p>
-
+          <div class="sale-title-area">
+            <div class="sale-label">
+              <span class="sale-fire">⚡</span>
+              FLASH SALE
             </div>
 
+            <h2>আজকের <span>বিশেষ অফার!</span></h2>
 
-            <!-- Countdown -->
-            <div class="sale-countdown-wrapper">
+            <p>সীমিত সময়ের জন্য নির্বাচিত পণ্যে পাচ্ছেন দারুণ সব ডিসকাউন্ট।</p>
+          </div>
 
-                <div class="countdown-title">
-                    অফার শেষ হতে বাকি
-                </div>
+          <!-- Countdown -->
+          <div class="sale-countdown-wrapper">
+            <div class="countdown-title">অফার শেষ হতে বাকি</div>
 
-                <div class="countdown">
+            <div class="countdown">
+              <div class="time-box">
+                <span id="sale-days">00</span>
+                <small>দিন</small>
+              </div>
 
-                    <div class="time-box">
-                        <span id="sale-days">00</span>
-                        <small>দিন</small>
-                    </div>
+              <div class="time-colon">:</div>
 
-                    <div class="time-colon">:</div>
+              <div class="time-box">
+                <span id="sale-hours">00</span>
+                <small>ঘণ্টা</small>
+              </div>
 
-                    <div class="time-box">
-                        <span id="sale-hours">00</span>
-                        <small>ঘণ্টা</small>
-                    </div>
+              <div class="time-colon">:</div>
 
-                    <div class="time-colon">:</div>
+              <div class="time-box">
+                <span id="sale-minutes">00</span>
+                <small>মিনিট</small>
+              </div>
 
-                    <div class="time-box">
-                        <span id="sale-minutes">00</span>
-                        <small>মিনিট</small>
-                    </div>
+              <div class="time-colon">:</div>
 
-                    <div class="time-colon">:</div>
-
-                    <div class="time-box seconds-box">
-                        <span id="sale-seconds">00</span>
-                        <small>সেকেন্ড</small>
-                    </div>
-
-                </div>
-
+              <div class="time-box seconds-box">
+                <span id="sale-seconds">00</span>
+                <small>সেকেন্ড</small>
+              </div>
             </div>
-
+          </div>
         </div>
-
 
         <!-- Product Grid -->
         <div class="flash-products">
-
-
-            <!-- Product 1 -->
+          <!-- Product 1 -->
+          <a href="flash_sale/flash_product1.html">
             <div class="flash-product-card">
+              <div class="product-image">
+                <span class="discount-badge"> -40% </span>
 
-                <div class="product-image">
+                <button class="wishlist-btn">♡</button>
 
-                    <span class="discount-badge">
-                        -40%
-                    </span>
+                <img
+                  src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80"
+                  alt="Premium T-Shirt"
+                />
 
-                    <button class="wishlist-btn">
-                        ♡
-                    </button>
+                <div class="quick-view">Quick View</div>
+              </div>
 
-                    <img
-                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80"
-                        alt="Premium T-Shirt"
-                    >
+              <div class="product-info">
+                <span class="product-category"> Men's Fashion </span>
 
-                    <div class="quick-view">
-                        Quick View
-                    </div>
+                <h3>Premium Casual T-Shirt</h3>
 
+                <div class="product-rating">
+                  ★★★★★
+                  <span>(24)</span>
                 </div>
 
-                <div class="product-info">
-
-                    <span class="product-category">
-                        Men's Fashion
-                    </span>
-
-                    <h3>
-                        Premium Casual T-Shirt
-                    </h3>
-
-                    <div class="product-rating">
-                        ★★★★★
-                        <span>(24)</span>
-                    </div>
-
-                    <div class="product-price">
-                        <strong>৳899</strong>
-                        <del>৳1,499</del>
-                    </div>
-
-                    <div class="stock-info">
-                        <div class="stock-text">
-                            <span>মাত্র 8টি বাকি!</span>
-                            <span>80%</span>
-                        </div>
-
-                        <div class="stock-bar">
-                            <span style="width: 80%;"></span>
-                        </div>
-                    </div>
-
-                    <button class="sale-cart-btn">
-                        <span>🛒</span>
-                        Add to Cart
-                    </button>
-
+                <div class="product-price">
+                  <strong>৳899</strong>
+                  <del>৳1,499</del>
                 </div>
 
+                <div class="stock-info">
+                  <div class="stock-text">
+                    <span>মাত্র 8টি বাকি!</span>
+                    <span>80%</span>
+                  </div>
+
+                  <div class="stock-bar">
+                    <span style="width: 80%"></span>
+                  </div>
+                </div>
+
+                <button class="sale-cart-btn">
+                  <span>🛒</span>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </a>
+
+          <!-- Product 2 -->
+          <a href="flash_sale/flash_product2.html">
+            <div class="flash-product-card">
+              <div class="product-image">
+                <span class="discount-badge"> -35% </span>
+
+                <button class="wishlist-btn">♡</button>
+
+                <img
+                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"
+                  alt="Leather Bag"
+                />
+
+                <div class="quick-view">Quick View</div>
+              </div>
+
+              <div class="product-info">
+                <span class="product-category"> Bags & Accessories </span>
+
+                <h3>Premium Leather Bag</h3>
+
+                <div class="product-rating">
+                  ★★★★★
+                  <span>(18)</span>
+                </div>
+
+                <div class="product-price">
+                  <strong>৳1,690</strong>
+                  <del>৳2,600</del>
+                </div>
+
+                <div class="stock-info">
+                  <div class="stock-text">
+                    <span>মাত্র 12টি বাকি!</span>
+                    <span>65%</span>
+                  </div>
+
+                  <div class="stock-bar">
+                    <span style="width: 65%"></span>
+                  </div>
+                </div>
+
+                <button class="sale-cart-btn">
+                  <span>🛒</span>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </a>
+
+          <!-- Product 3 -->
+          <a href="./flash_sale/flash_product3.html">
+            <div class="flash-product-card">
+            <div class="product-image">
+              <span class="discount-badge"> -50% </span>
+
+              <button class="wishlist-btn">♡</button>
+
+              <img
+                src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"
+                alt="Sneakers"
+              />
+
+              <div class="quick-view">Quick View</div>
             </div>
 
+            <div class="product-info">
+              <span class="product-category"> Footwear </span>
 
-            <!-- Product 2 -->
+              <h3>Premium Casual Sneakers</h3>
+
+              <div class="product-rating">
+                ★★★★★
+                <span>(31)</span>
+              </div>
+
+              <div class="product-price">
+                <strong>৳1,250</strong>
+                <del>৳2,500</del>
+              </div>
+
+              <div class="stock-info">
+                <div class="stock-text">
+                  <span>মাত্র 5টি বাকি!</span>
+                  <span>90%</span>
+                </div>
+
+                <div class="stock-bar">
+                  <span style="width: 90%"></span>
+                </div>
+              </div>
+
+              <button class="sale-cart-btn">
+                <span>🛒</span>
+                Add to Cart
+              </button>
+            </div>
+            </div>
+          </a>
+
+          <!-- Product 4 -->
+          <a href="./flash_sale/flash_product4.html">
             <div class="flash-product-card">
+            <div class="product-image">
+              <span class="discount-badge"> -30% </span>
 
-                <div class="product-image">
+              <button class="wishlist-btn">♡</button>
 
-                    <span class="discount-badge">
-                        -35%
-                    </span>
+              <img
+                src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=700&q=80"
+                alt="Watch"
+              />
 
-                    <button class="wishlist-btn">
-                        ♡
-                    </button>
-
-                    <img
-                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"
-                        alt="Leather Bag"
-                    >
-
-                    <div class="quick-view">
-                        Quick View
-                    </div>
-
-                </div>
-
-                <div class="product-info">
-
-                    <span class="product-category">
-                        Bags & Accessories
-                    </span>
-
-                    <h3>
-                        Premium Leather Bag
-                    </h3>
-
-                    <div class="product-rating">
-                        ★★★★★
-                        <span>(18)</span>
-                    </div>
-
-                    <div class="product-price">
-                        <strong>৳1,690</strong>
-                        <del>৳2,600</del>
-                    </div>
-
-                    <div class="stock-info">
-                        <div class="stock-text">
-                            <span>মাত্র 12টি বাকি!</span>
-                            <span>65%</span>
-                        </div>
-
-                        <div class="stock-bar">
-                            <span style="width: 65%;"></span>
-                        </div>
-                    </div>
-
-                    <button class="sale-cart-btn">
-                        <span>🛒</span>
-                        Add to Cart
-                    </button>
-
-                </div>
-
+              <div class="quick-view">Quick View</div>
             </div>
 
+            <div class="product-info">
+              <span class="product-category"> Accessories </span>
 
-            <!-- Product 3 -->
-            <div class="flash-product-card">
+              <h3>Classic Premium Watch</h3>
 
-                <div class="product-image">
+              <div class="product-rating">
+                ★★★★★
+                <span>(16)</span>
+              </div>
 
-                    <span class="discount-badge">
-                        -50%
-                    </span>
+              <div class="product-price">
+                <strong>৳2,100</strong>
+                <del>৳3,000</del>
+              </div>
 
-                    <button class="wishlist-btn">
-                        ♡
-                    </button>
-
-                    <img
-                        src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"
-                        alt="Sneakers"
-                    >
-
-                    <div class="quick-view">
-                        Quick View
-                    </div>
-
+              <div class="stock-info">
+                <div class="stock-text">
+                  <span>মাত্র 7টি বাকি!</span>
+                  <span>75%</span>
                 </div>
 
-                <div class="product-info">
-
-                    <span class="product-category">
-                        Footwear
-                    </span>
-
-                    <h3>
-                        Premium Casual Sneakers
-                    </h3>
-
-                    <div class="product-rating">
-                        ★★★★★
-                        <span>(31)</span>
-                    </div>
-
-                    <div class="product-price">
-                        <strong>৳1,250</strong>
-                        <del>৳2,500</del>
-                    </div>
-
-                    <div class="stock-info">
-                        <div class="stock-text">
-                            <span>মাত্র 5টি বাকি!</span>
-                            <span>90%</span>
-                        </div>
-
-                        <div class="stock-bar">
-                            <span style="width: 90%;"></span>
-                        </div>
-                    </div>
-
-                    <button class="sale-cart-btn">
-                        <span>🛒</span>
-                        Add to Cart
-                    </button>
-
+                <div class="stock-bar">
+                  <span style="width: 75%"></span>
                 </div>
+              </div>
 
+              <button class="sale-cart-btn">
+                <span>🛒</span>
+                Add to Cart
+              </button>
             </div>
-
-
-            <!-- Product 4 -->
-            <div class="flash-product-card">
-
-                <div class="product-image">
-
-                    <span class="discount-badge">
-                        -30%
-                    </span>
-
-                    <button class="wishlist-btn">
-                        ♡
-                    </button>
-
-                    <img
-                        src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=700&q=80"
-                        alt="Watch"
-                    >
-
-                    <div class="quick-view">
-                        Quick View
-                    </div>
-
-                </div>
-
-                <div class="product-info">
-
-                    <span class="product-category">
-                        Accessories
-                    </span>
-
-                    <h3>
-                        Classic Premium Watch
-                    </h3>
-
-                    <div class="product-rating">
-                        ★★★★★
-                        <span>(16)</span>
-                    </div>
-
-                    <div class="product-price">
-                        <strong>৳2,100</strong>
-                        <del>৳3,000</del>
-                    </div>
-
-                    <div class="stock-info">
-                        <div class="stock-text">
-                            <span>মাত্র 7টি বাকি!</span>
-                            <span>75%</span>
-                        </div>
-
-                        <div class="stock-bar">
-                            <span style="width: 75%;"></span>
-                        </div>
-                    </div>
-
-                    <button class="sale-cart-btn">
-                        <span>🛒</span>
-                        Add to Cart
-                    </button>
-
-                </div>
-
             </div>
-
+          </a>
         </div>
 
-        <!-- Bottom Button -->
-        <div class="view-all-sale">
-            <a href="#">
-                View All Flash Sale
-                <span>→</span>
-            </a>
+        <!-- Flash Sale Extra Products -->
+        <div class="extra-products" id="extraProducts">
+        <!-- Product 5 -->
+        <a href="./flash_sale/flash_product5.html">
+            <div class="flash-product-card">
+            <div class="product-image">
+              <span class="discount-badge"> -50% </span>
+
+              <button class="wishlist-btn">♡</button>
+
+              <img
+                src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"
+                alt="Sneakers"
+              />
+
+              <div class="quick-view">Quick View</div>
+            </div>
+
+            <div class="product-info">
+              <span class="product-category"> Footwear </span>
+
+              <h3>Premium Casual Sneakers</h3>
+
+              <div class="product-rating">
+                ★★★★★
+                <span>(31)</span>
+              </div>
+
+              <div class="product-price">
+                <strong>৳1,250</strong>
+                <del>৳2,500</del>
+              </div>
+
+              <div class="stock-info">
+                <div class="stock-text">
+                  <span>মাত্র 5টি বাকি!</span>
+                  <span>90%</span>
+                </div>
+
+                <div class="stock-bar">
+                  <span style="width: 90%"></span>
+                </div>
+              </div>
+
+              <button class="sale-cart-btn">
+                <span>🛒</span>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Product 6 -->
+        <a href="./flash_sale/flash_product6.html">
+            <div class="flash-product-card">
+            <div class="product-image">
+              <span class="discount-badge"> -50% </span>
+
+              <button class="wishlist-btn">♡</button>
+
+              <img
+                src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"
+                alt="Sneakers"
+              />
+
+              <div class="quick-view">Quick View</div>
+            </div>
+
+            <div class="product-info">
+              <span class="product-category"> Footwear </span>
+
+              <h3>Premium Casual Sneakers</h3>
+
+              <div class="product-rating">
+                ★★★★★
+                <span>(31)</span>
+              </div>
+
+              <div class="product-price">
+                <strong>৳1,250</strong>
+                <del>৳2,500</del>
+              </div>
+
+              <div class="stock-info">
+                <div class="stock-text">
+                  <span>মাত্র 5টি বাকি!</span>
+                  <span>90%</span>
+                </div>
+
+                <div class="stock-bar">
+                  <span style="width: 90%"></span>
+                </div>
+              </div>
+
+              <button class="sale-cart-btn">
+                <span>🛒</span>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Product 7 -->
+        <a href="./flash_sale/flash_product7.html">
+            <div class="flash-product-card">
+            <div class="product-image">
+              <span class="discount-badge"> -50% </span>
+
+              <button class="wishlist-btn">♡</button>
+
+              <img
+                src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"
+                alt="Sneakers"
+              />
+
+              <div class="quick-view">Quick View</div>
+            </div>
+
+            <div class="product-info">
+              <span class="product-category"> Footwear </span>
+
+              <h3>Premium Casual Sneakers</h3>
+
+              <div class="product-rating">
+                ★★★★★
+                <span>(31)</span>
+              </div>
+
+              <div class="product-price">
+                <strong>৳1,250</strong>
+                <del>৳2,500</del>
+              </div>
+
+              <div class="stock-info">
+                <div class="stock-text">
+                  <span>মাত্র 5টি বাকি!</span>
+                  <span>90%</span>
+                </div>
+
+                <div class="stock-bar">
+                  <span style="width: 90%"></span>
+                </div>
+              </div>
+
+              <button class="sale-cart-btn">
+                <span>🛒</span>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Product 8 -->
+        <a href="./flash_sale/flash_product8.html">
+            <div class="flash-product-card">
+            <div class="product-image">
+              <span class="discount-badge"> -50% </span>
+
+              <button class="wishlist-btn">♡</button>
+
+              <img
+                src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"
+                alt="Sneakers"
+              />
+
+              <div class="quick-view">Quick View</div>
+            </div>
+
+            <div class="product-info">
+              <span class="product-category"> Footwear </span>
+
+              <h3>Premium Casual Sneakers</h3>
+
+              <div class="product-rating">
+                ★★★★★
+                <span>(31)</span>
+              </div>
+
+              <div class="product-price">
+                <strong>৳1,250</strong>
+                <del>৳2,500</del>
+              </div>
+
+              <div class="stock-info">
+                <div class="stock-text">
+                  <span>মাত্র 5টি বাকি!</span>
+                  <span>90%</span>
+                </div>
+
+                <div class="stock-bar">
+                  <span style="width: 90%"></span>
+                </div>
+              </div>
+
+              <button class="sale-cart-btn">
+                <span>🛒</span>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </a>
         </div>
 
-    </div>
+        <!-- Button -->
+        <div class="view-btn-wrapper">
+          <button id="viewFlashBtn">View All Flash Sale <span>→</span></button>
+        </div>
+      </div>
+    </section>
+    <!-- ================= FEATURES ================= -->
 
-</section>
-<!-- ================= FEATURES ================= -->
-
-<section class="features section">
-
-    <div class="container features-grid">
+    <section class="features section">
+      <div class="container features-grid">
+        <div class="feature-card reveal">
+          <i class="fa-solid fa-truck"></i>
+          <div>
+            <h3>Free Shipping</h3>
+            <p>On orders over ৳2000</p>
+          </div>
+        </div>
 
         <div class="feature-card reveal">
-            <i class="fa-solid fa-truck"></i>
-            <div>
-                <h3>Free Shipping</h3>
-                <p>On orders over ৳2000</p>
-            </div>
+          <i class="fa-solid fa-shield-halved"></i>
+          <div>
+            <h3>Secure Payment</h3>
+            <p>100% secure checkout</p>
+          </div>
         </div>
 
         <div class="feature-card reveal">
-            <i class="fa-solid fa-shield-halved"></i>
-            <div>
-                <h3>Secure Payment</h3>
-                <p>100% secure checkout</p>
-            </div>
+          <i class="fa-solid fa-rotate-left"></i>
+          <div>
+            <h3>Easy Returns</h3>
+            <p>7 days return policy</p>
+          </div>
         </div>
 
         <div class="feature-card reveal">
-            <i class="fa-solid fa-rotate-left"></i>
-            <div>
-                <h3>Easy Returns</h3>
-                <p>7 days return policy</p>
-            </div>
+          <i class="fa-solid fa-headset"></i>
+          <div>
+            <h3>24/7 Support</h3>
+            <p>We're here to help</p>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="feature-card reveal">
-            <i class="fa-solid fa-headset"></i>
-            <div>
-                <h3>24/7 Support</h3>
-                <p>We're here to help</p>
-            </div>
-        </div>
+    <!-- ================= PRODUCTS ================= -->
 
-    </div>
-
-</section>
-
-
-<!-- ================= PRODUCTS ================= -->
-
-<section class="products section" id="products">
-
-    <div class="container">
-
+    <section class="products section" id="products">
+      <div class="container">
         <div class="products-top reveal">
+          <div class="section-heading left">
+            <span>Our Products</span>
+            <h2>Popular Products</h2>
+          </div>
 
-            <div class="section-heading left">
-                <span>Our Products</span>
-                <h2>Popular Products</h2>
-            </div>
-
-            <div class="product-controls">
-
-                <select id="sortSelect">
-                    <option value="default">Sort By</option>
-                    <option value="low">Price: Low to High</option>
-                    <option value="high">Price: High to Low</option>
-                    <option value="name">Name: A-Z</option>
-                </select>
-
-            </div>
-
+          <div class="product-controls">
+            <select id="sortSelect">
+              <option value="default">Sort By</option>
+              <option value="low">Price: Low to High</option>
+              <option value="high">Price: High to Low</option>
+              <option value="name">Name: A-Z</option>
+            </select>
+          </div>
         </div>
 
         <div class="filter-buttons reveal">
+          <button class="filter-btn active" data-filter="all">All</button>
 
-            <button class="filter-btn active" data-filter="all">
-                All
-            </button>
+          <button class="filter-btn" data-filter="electronics">
+            Electronics
+          </button>
 
-            <button class="filter-btn" data-filter="electronics">
-                Electronics
-            </button>
+          <button class="filter-btn" data-filter="fashion">Fashion</button>
 
-            <button class="filter-btn" data-filter="fashion">
-                Fashion
-            </button>
+          <button class="filter-btn" data-filter="shoes">Shoes</button>
 
-            <button class="filter-btn" data-filter="shoes">
-                Shoes
-            </button>
-
-            <button class="filter-btn" data-filter="accessories">
-                Accessories
-            </button>
-
+          <button class="filter-btn" data-filter="accessories">
+            Accessories
+          </button>
         </div>
 
         <div class="product-grid" id="productGrid">
-            <!-- Products generated by JavaScript -->
+          <!-- Products generated by JavaScript -->
         </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- ================= CATEGORIES ================= -->
 
-</section>
-
-<!-- ================= CATEGORIES ================= -->
-
-<section class="categories section" id="categories">
-
-    <div class="container">
-
+    <section class="categories section" id="categories">
+      <div class="container">
         <div class="section-heading reveal">
+          <span>Shop By Category</span>
 
-            <span>Shop By Category</span>
+          <h2>Find What You Love</h2>
 
-            <h2>Find What You Love</h2>
-
-            <p>
-                Browse our most popular categories.
-            </p>
-
+          <p>Browse our most popular categories.</p>
         </div>
 
         <div class="category-grid">
+          <button class="category-card reveal" data-category="electronics">
+            <i class="fa-solid fa-laptop"></i>
+            <h3>Electronics</h3>
+            <p>12 Products</p>
+          </button>
 
-            <button class="category-card reveal" data-category="electronics">
-                <i class="fa-solid fa-laptop"></i>
-                <h3>Electronics</h3>
-                <p>12 Products</p>
-            </button>
+          <button class="category-card reveal" data-category="fashion">
+            <i class="fa-solid fa-shirt"></i>
+            <h3>Fashion</h3>
+            <p>18 Products</p>
+          </button>
 
-            <button class="category-card reveal" data-category="fashion">
-                <i class="fa-solid fa-shirt"></i>
-                <h3>Fashion</h3>
-                <p>18 Products</p>
-            </button>
+          <button class="category-card reveal" data-category="shoes">
+            <i class="fa-solid fa-shoe-prints"></i>
+            <h3>Shoes</h3>
+            <p>10 Products</p>
+          </button>
 
-            <button class="category-card reveal" data-category="shoes">
-                <i class="fa-solid fa-shoe-prints"></i>
-                <h3>Shoes</h3>
-                <p>10 Products</p>
-            </button>
-
-            <button class="category-card reveal" data-category="accessories">
-                <i class="fa-solid fa-gem"></i>
-                <h3>Accessories</h3>
-                <p>15 Products</p>
-            </button>
-
+          <button class="category-card reveal" data-category="accessories">
+            <i class="fa-solid fa-gem"></i>
+            <h3>Accessories</h3>
+            <p>15 Products</p>
+          </button>
         </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- ================= PROMO ================= -->
 
-</section>
-
-
-<!-- ================= PROMO ================= -->
-
-<section class="promo section">
-
-    <div class="container">
-
+    <section class="promo section">
+      <div class="container">
         <div class="promo-box reveal">
+          <div>
+            <span>Limited Offer</span>
 
-            <div>
-                <span>Limited Offer</span>
+            <h2>Get 20% Off Your First Order</h2>
 
-                <h2>
-                    Get 20% Off Your
-                    First Order
-                </h2>
+            <p>Use code <strong>WELCOME20</strong> at checkout.</p>
 
-                <p>
-                    Use code <strong>WELCOME20</strong> at checkout.
-                </p>
+            <a href="#products" class="btn promo-btn"> Shop Now </a>
+          </div>
 
-                <a href="#products" class="btn promo-btn">
-                    Shop Now
-                </a>
-            </div>
-
-            <div class="promo-icon">
-                <i class="fa-solid fa-percent"></i>
-            </div>
-
+          <div class="promo-icon">
+            <i class="fa-solid fa-percent"></i>
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- ================= ABOUT ================= -->
 
-</section>
-
-
-<!-- ================= ABOUT ================= -->
-
-<section class="about section" id="about">
-
-    <div class="container about-container">
-
+    <section class="about section" id="about">
+      <div class="container about-container">
         <div class="about-image reveal">
-
-            <img
-                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80"
-                alt="About ShopNest"
-            >
-
+          <img
+            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80"
+            alt="About ShopNest"
+          />
         </div>
 
         <div class="about-content reveal">
+          <span>About ShopNest</span>
 
-            <span>About ShopNest</span>
+          <h2>Shopping Made Simple & Better</h2>
 
-            <h2>
-                Shopping Made
-                Simple & Better
-            </h2>
+          <p>
+            ShopNest is a modern online shopping platform created to provide
+            quality products at affordable prices with a simple and enjoyable
+            shopping experience.
+          </p>
 
-            <p>
-                ShopNest is a modern online shopping platform
-                created to provide quality products at affordable
-                prices with a simple and enjoyable shopping experience.
-            </p>
-
-            <div class="about-stats">
-
-                <div>
-                    <strong>10K+</strong>
-                    <span>Customers</span>
-                </div>
-
-                <div>
-                    <strong>500+</strong>
-                    <span>Products</span>
-                </div>
-
-                <div>
-                    <strong>4.9</strong>
-                    <span>Rating</span>
-                </div>
-
+          <div class="about-stats">
+            <div>
+              <strong>10K+</strong>
+              <span>Customers</span>
             </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= NEWSLETTER ================= -->
-
-<section class="newsletter section">
-
-    <div class="container">
-
-        <div class="newsletter-box reveal">
 
             <div>
-                <span>Stay Updated</span>
-
-                <h2>
-                    Subscribe To Our Newsletter
-                </h2>
-
-                <p>
-                    Get the latest products, offers and updates.
-                </p>
+              <strong>500+</strong>
+              <span>Products</span>
             </div>
 
-            <form id="newsletterForm">
-
-                <input
-                    type="email"
-                    id="emailInput"
-                    placeholder="Enter your email"
-                    required
-                >
-
-                <button type="submit" class="btn primary-btn">
-                    Subscribe
-                </button>
-
-            </form>
-
+            <div>
+              <strong>4.9</strong>
+              <span>Rating</span>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- ================= NEWSLETTER ================= -->
 
-</section>
+    <section class="newsletter section">
+      <div class="container">
+        <div class="newsletter-box reveal">
+          <div>
+            <span>Stay Updated</span>
 
+            <h2>Subscribe To Our Newsletter</h2>
 
-<!-- ================= FOOTER ================= -->
+            <p>Get the latest products, offers and updates.</p>
+          </div>
 
-<footer class="footer" id="contact">
+          <form id="newsletterForm">
+            <input
+              type="email"
+              id="emailInput"
+              placeholder="Enter your email"
+              required
+            />
 
-    <div class="container footer-grid">
+            <button type="submit" class="btn primary-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
 
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer" id="contact">
+      <div class="container footer-grid">
         <div class="footer-column">
+          <a href="#home" class="logo"> Shop<span>Nest</span> </a>
 
-            <a href="#home" class="logo">
-                Shop<span>Nest</span>
+          <p>
+            Your trusted destination for modern, quality and affordable
+            products.
+          </p>
+
+          <div class="social-links">
+            <a href="#">
+              <i class="fa-brands fa-facebook-f"></i>
             </a>
 
-            <p>
-                Your trusted destination for modern,
-                quality and affordable products.
-            </p>
+            <a href="#">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
 
-            <div class="social-links">
+            <a href="#">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
 
-                <a href="#">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
-
-                <a href="#">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-
-            </div>
-
+            <a href="#">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
         </div>
 
         <div class="footer-column">
+          <h3>Quick Links</h3>
 
-            <h3>Quick Links</h3>
-
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#categories">Categories</a>
-            <a href="#about">About Us</a>
-
+          <a href="#home">Home</a>
+          <a href="#products">Products</a>
+          <a href="#categories">Categories</a>
+          <a href="#about">About Us</a>
         </div>
 
         <div class="footer-column">
+          <h3>Customer Service</h3>
 
-            <h3>Customer Service</h3>
-
-            <a href="#">FAQ</a>
-            <a href="#">Shipping Policy</a>
-            <a href="#">Return Policy</a>
-            <a href="#">Privacy Policy</a>
-
+          <a href="#">FAQ</a>
+          <a href="#">Shipping Policy</a>
+          <a href="#">Return Policy</a>
+          <a href="#">Privacy Policy</a>
         </div>
 
         <div class="footer-column">
+          <h3>Contact</h3>
 
-            <h3>Contact</h3>
+          <p>
+            <i class="fa-solid fa-location-dot"></i>
+            Dhaka, Bangladesh
+          </p>
 
-            <p>
-                <i class="fa-solid fa-location-dot"></i>
-                Dhaka, Bangladesh
-            </p>
+          <p>
+            <i class="fa-solid fa-phone"></i>
+            +880 1234-567890
+          </p>
 
-            <p>
-                <i class="fa-solid fa-phone"></i>
-                +880 1234-567890
-            </p>
-
-            <p>
-                <i class="fa-solid fa-envelope"></i>
-                hello@shopnest.com
-            </p>
-
+          <p>
+            <i class="fa-solid fa-envelope"></i>
+            hello@shopnest.com
+          </p>
         </div>
+      </div>
 
-    </div>
+      <div class="footer-bottom">
+        <p>© 2026 ShopNest. All Rights Reserved.</p>
+      </div>
+    </footer>
 
-    <div class="footer-bottom">
-        <p>
-            © 2026 ShopNest. All Rights Reserved.
-        </p>
-    </div>
+    <!-- ================= CART SIDEBAR ================= -->
 
-</footer>
+    <div class="cart-overlay" id="cartOverlay"></div>
 
-
-<!-- ================= CART SIDEBAR ================= -->
-
-<div class="cart-overlay" id="cartOverlay"></div>
-
-<aside class="cart-sidebar" id="cartSidebar">
-
-    <div class="cart-header">
-
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
         <h2>Your Cart</h2>
 
         <button id="closeCart">
-            <i class="fa-solid fa-xmark"></i>
+          <i class="fa-solid fa-xmark"></i>
         </button>
+      </div>
 
-    </div>
-
-    <div class="cart-items" id="cartItems">
+      <div class="cart-items" id="cartItems">
         <!-- Cart items generated by JS -->
-    </div>
+      </div>
 
-    <div class="cart-footer">
-
+      <div class="cart-footer">
         <div class="cart-total">
-            <span>Total</span>
-            <strong id="cartTotal">৳0</strong>
+          <span>Total</span>
+          <strong id="cartTotal">৳0</strong>
         </div>
 
         <button class="btn primary-btn checkout-btn" id="checkoutBtn">
-            Proceed To Checkout
+          Proceed To Checkout
         </button>
+      </div>
+    </aside>
 
-    </div>
+    <!-- ================= PRODUCT MODAL ================= -->
 
-</aside>
-
-
-<!-- ================= PRODUCT MODAL ================= -->
-
-<div class="modal-overlay" id="productModal">
-
-    <div class="product-modal">
-
+    <div class="modal-overlay" id="productModal">
+      <div class="product-modal">
         <button class="modal-close" id="modalClose">
-            <i class="fa-solid fa-xmark"></i>
+          <i class="fa-solid fa-xmark"></i>
         </button>
 
         <div id="modalContent">
-            <!-- Product details generated by JS -->
+          <!-- Product details generated by JS -->
         </div>
-
+      </div>
     </div>
 
-</div>
+    <!-- ================= TOAST ================= -->
 
+    <div class="toast" id="toast">
+      <i class="fa-solid fa-circle-check"></i>
 
-<!-- ================= TOAST ================= -->
+      <span id="toastMessage"> Added to cart </span>
+    </div>
 
-<div class="toast" id="toast">
-
-    <i class="fa-solid fa-circle-check"></i>
-
-    <span id="toastMessage">
-        Added to cart
-    </span>
-
-</div>
-
-
-<script src="script.js"></script>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
