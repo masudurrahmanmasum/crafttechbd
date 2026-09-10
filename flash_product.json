@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "id": "product_1",
+      "name": "Premium Casual T-Shirt",
+      "category": "MEN'S FASHION",
+
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=85",
+
+      "sale": {
+        "enabled": true,
+        "discount": 40
+      },
+
+      "rating": {
+        "stars": 5,
+        "reviews": 24
+      },
+
+      "price": {
+        "current": 899,
+        "old": 1499,
+        "currency": "৳"
+      },
+
+      "description": "Premium Casual T-Shirt আপনার প্রতিদিনের ব্যবহার, অফিস, ঘুরতে যাওয়া কিংবা casual outing-এর জন্য একটি আরামদায়ক ও স্টাইলিশ পোশাক। উন্নতমানের ফেব্রিক এবং modern fit-এর কারণে এটি দীর্ঘ সময় পরেও comfortable থাকে।",
+
+      "quantity": {
+        "minimum": 1,
+        "maximum": 10,
+        "default": 1
+      },
+
+      "delivery": {
+        "title": "Delivery",
+        "description": "সারা বাংলাদেশ"
+      },
+
+      "payment": {
+        "title": "Payment",
+        "description": "Cash on Delivery"
+      },
+
+      "return": {
+        "title": "Return",
+        "description": "৭ দিনের Return"
+      },
+
+      "quality": {
+        "title": "Quality",
+        "description": "Premium Quality"
+      },
+
+      "stock": {
+        "status": "limited",
+        "message": "স্টক সীমিত!",
+        "percentage": 78
+      },
+
+      "fullDescription": {
+        "title": "প্রোডাক্টের বিস্তারিত বিবরণ",
+
+        "description": "Premium Casual T-Shirt তৈরি করা হয়েছে উন্নতমানের breathable cotton fabric দিয়ে। এর clean design এবং comfortable fitting আপনাকে দেবে smart এবং modern look। এটি দৈনন্দিন ব্যবহার, অফিসের casual day, বন্ধুদের সাথে outing অথবা ভ্রমণের জন্য উপযোগী।",
+
+        "features": [
+          "Premium quality cotton fabric",
+          "Soft, comfortable এবং breathable material",
+          "Regular / modern fit",
+          "সহজে ধোয়া এবং maintenance করা যায়",
+          "দৈনন্দিন ব্যবহারের জন্য উপযোগী",
+          "নরসিংদী সদরের ভিতর Cash on Delivery"
+        ]
+      }
+    }
+  ]
+}

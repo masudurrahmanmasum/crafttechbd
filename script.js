@@ -265,6 +265,86 @@ function renderProducts(productList = products) {
 }
 
 /* =====================================================
+   Button animation
+===================================================== */
+
+const buttons = document.querySelectorAll(".fizzyBtn");
+
+const colors = [
+  "#6c4df6", "#5034d4", "#8c76ff",
+  "#ff6b6b", "#ff8a8a", "#9b8aff",
+  "#c4baff", "#6f5cff"
+];
+
+buttons.forEach(btn => {
+
+  const box = btn.querySelector(".fizzy-particles");
+
+  let hover = false;
+  let interval = null;
+
+  function particle() {
+    if (!hover) return;
+
+    const p = document.createElement("i");
+    const a = Math.random() * Math.PI * 2;
+    const s = 15 + Math.random() * 20;
+    const e = 80 + Math.random() * 120;
+    const d = .8 + Math.random() * 1.2;
+    const c = colors[Math.floor(Math.random() * colors.length)];
+    const size = 3 + Math.random() * 7;
+
+    p.className = "fizzy-particle";
+
+    p.style.cssText = `
+      --sx:${Math.cos(a) * s}px;
+      --sy:${Math.sin(a) * s}px;
+      --ex:${Math.cos(a) * e}px;
+      --ey:${Math.sin(a) * e}px;
+      --d:${d}s;
+      width:${size}px;
+      height:${size}px;
+      background:${c};
+      color:${c};
+    `;
+
+    box.appendChild(p);
+
+    setTimeout(() => p.remove(), d * 1000 + 100);
+  }
+
+  function start() {
+    if (interval) return;
+
+    for (let i = 0; i < 8; i++) {
+      setTimeout(particle, i * 40);
+    }
+
+    interval = setInterval(particle, 30);
+  }
+
+  function stop() {
+    clearInterval(interval);
+    interval = null;
+  }
+
+  btn.addEventListener("mouseenter", () => {
+    hover = true;
+    start();
+  });
+
+  btn.addEventListener("mouseleave", () => {
+    hover = false;
+    stop();
+  });
+
+});
+
+
+
+
+
+/* =====================================================
    STAR RATING
 ===================================================== */
 

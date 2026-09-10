@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Product Details | Craft Tech BD</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap");
@@ -507,7 +513,11 @@
         }
 
         .logo {
-          font-size: 19px;
+          font-size: 25px;
+          font-weight: 800;
+        }
+        .logo img {
+          width: 12rem;
         }
 
         .product-image {
@@ -560,123 +570,44 @@
   </head>
 
   <body>
+    <!-- =========================
+       HEADER
+  ========================= -->
+
     <header class="header">
       <div class="logo">
-        <a href="#home" class="logo">
-          <img src="../image/craft_logo.png" alt="" />
+        <a href="../index.html" class="logo">
+          <img src="../image/craft_logo.png" alt="Craft Tech BD" />
         </a>
       </div>
+
       <button class="back" onclick="history.back()">← ফিরে যান</button>
     </header>
 
+    <!-- =========================
+       BREADCRUMB
+  ========================= -->
+
     <div class="breadcrumb">
-      Home / Products / <span>Premium Casual T-Shirt</span>
+      Home / Products /
+
+      <span id="breadcrumbProduct"> Loading... </span>
     </div>
 
+    <!-- =========================
+       PRODUCT
+  ========================= -->
+
     <main class="container">
-      <section class="product">
-        <!-- PRODUCT IMAGE -->
-        <div class="product-image">
-          <div class="sale">-40%</div>
-
-          <button class="favorite" id="favorite">♡</button>
-
-          <!-- নিজের product image এখানে দিন -->
-          <img
-            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=85"
-            alt="Premium Casual T-Shirt"
-          />
-        </div>
-
-        <!-- PRODUCT DETAILS -->
-        <div class="details">
-          <div class="category">MEN'S FASHION</div>
-
-          <h1 class="title">Premium Casual T-Shirt</h1>
-
-          <div class="rating">
-            <span class="stars">★★★★★</span>
-            <span class="reviews">(24 Reviews)</span>
-          </div>
-
-          <div class="price">
-            <span class="current-price">৳899</span>
-            <span class="old-price">৳1,499</span>
-          </div>
-
-          <p class="description">
-            Premium Casual T-Shirt আপনার প্রতিদিনের ব্যবহার, অফিস, ঘুরতে যাওয়া
-            কিংবা casual outing-এর জন্য একটি আরামদায়ক ও স্টাইলিশ পোশাক।
-            উন্নতমানের ফেব্রিক এবং modern fit-এর কারণে এটি দীর্ঘ সময় পরেও
-            comfortable থাকে।
-          </p>
-          <!-- QUANTITY + ORDER -->
-          <div class="buy-row">
-            <div class="quantity">
-              <button id="minus">−</button>
-              <span id="quantity">1</span>
-              <button id="plus">+</button>
-            </div>
-
-            <button class="order-btn" id="orderBtn">🛒 এখনই অর্ডার করুন</button>
-          </div>
-
-          <div class="info">
-            <div class="info-box">
-              <strong>🚚 Delivery</strong><br />
-              সারা বাংলাদেশ
-            </div>
-
-            <div class="info-box">
-              <strong>💵 Payment</strong><br />
-              Cash on Delivery
-            </div>
-
-            <div class="info-box">
-              <strong>🔄 Return</strong><br />
-              ৭ দিনের Return
-            </div>
-
-            <div class="info-box">
-              <strong>🛡️ Quality</strong><br />
-              Premium Quality
-            </div>
-          </div>
-
-          <div class="stock">
-            <span>স্টক সীমিত!</span>
-            <span>78%</span>
-          </div>
-
-          <div class="progress">
-            <span></span>
-          </div>
-        </div>
-      </section>
-
-      <!-- FULL DESCRIPTION -->
-      <section class="long-description">
-        <h2>প্রোডাক্টের বিস্তারিত বিবরণ</h2>
-
-        <p>
-          Premium Casual T-Shirt তৈরি করা হয়েছে উন্নতমানের breathable cotton
-          fabric দিয়ে। এর clean design এবং comfortable fitting আপনাকে দেবে smart
-          এবং modern look। এটি দৈনন্দিন ব্যবহার, অফিসের casual day, বন্ধুদের
-          সাথে outing অথবা ভ্রমণের জন্য উপযোগী।
-        </p>
-
-        <ul>
-          <li>Premium quality cotton fabric</li>
-          <li>Soft, comfortable এবং breathable material</li>
-          <li>Regular / modern fit</li>
-          <li>সহজে ধোয়া এবং maintenance করা যায়</li>
-          <li>দৈনন্দিন ব্যবহারের জন্য উপযোগী</li>
-          <li>সারা বাংলাদেশে Cash on Delivery</li>
-        </ul>
-      </section>
+      <div id="productContainer">
+        <div class="loading">Product loading...</div>
+      </div>
     </main>
 
-    <!-- ORDER MODAL -->
+    <!-- =========================
+       ORDER MODAL
+  ========================= -->
+
     <div class="modal" id="modal">
       <div class="modal-box">
         <button class="close" id="close">×</button>
@@ -684,22 +615,36 @@
         <div id="formArea">
           <h2>অর্ডার করুন</h2>
 
-          <div class="selected">Premium Casual T-Shirt — ৳899</div>
+          <div class="selected" id="selectedProduct"></div>
 
           <form id="orderForm">
             <div class="form-group">
-              <label>আপনার নাম *</label>
-              <input type="text" placeholder="পূর্ণ নাম" required />
+              <label> আপনার নাম * </label>
+
+              <input
+                type="text"
+                id="customerName"
+                placeholder="পূর্ণ নাম"
+                required
+              />
             </div>
 
             <div class="form-group">
-              <label>মোবাইল নম্বর *</label>
-              <input type="tel" placeholder="01XXXXXXXXX" required />
+              <label> মোবাইল নম্বর * </label>
+
+              <input
+                type="tel"
+                id="customerPhone"
+                placeholder="01XXXXXXXXX"
+                required
+              />
             </div>
 
             <div class="form-group">
-              <label>ডেলিভারি ঠিকানা *</label>
+              <label> ডেলিভারি ঠিকানা * </label>
+
               <textarea
+                id="customerAddress"
                 rows="3"
                 placeholder="সম্পূর্ণ ঠিকানা"
                 required
@@ -707,10 +652,13 @@
             </div>
 
             <div class="form-group">
-              <label>Payment Method</label>
-              <select>
+              <label> Payment Method </label>
+
+              <select id="paymentMethod">
                 <option>Cash on Delivery</option>
+
                 <option>bKash</option>
+
                 <option>Nagad</option>
               </select>
             </div>
@@ -718,6 +666,8 @@
             <button class="confirm" type="submit">অর্ডার কনফার্ম করুন</button>
           </form>
         </div>
+
+        <!-- SUCCESS -->
 
         <div class="success" id="success">
           <div class="success-icon">✓</div>
@@ -731,181 +681,710 @@
       </div>
     </div>
 
+    <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
     <script>
-      /* QUANTITY */
+      /* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
+
+      let product = null;
+
       let quantity = 1;
 
-      const quantityEl = document.getElementById("quantity");
+      /* =========================================================
+   GOOGLE APPS SCRIPT URL
+========================================================= */
 
-      document.getElementById("plus").onclick = function () {
-        quantity++;
-        quantityEl.textContent = quantity;
-      };
+      const googleScriptURL =
+        "https://script.google.com/macros/s/AKfycbx1vJEF_32j92GWe9pamuZVRSvs2bi_m422c9ELrhivrzd391kohAriVlULxvSK26Qt/exec";
 
-      document.getElementById("minus").onclick = function () {
-        if (quantity > 1) {
-          quantity--;
-          quantityEl.textContent = quantity;
+      /* =========================================================
+   WHATSAPP NUMBER
+========================================================= */
+
+      const whatsappNumber = "8801609278822";
+
+      /* =========================================================
+   PRODUCT ID FROM URL
+=========================================================
+
+Example:
+
+index.html?id=product_1
+
+========================================================= */
+
+      const urlParams = new URLSearchParams(window.location.search);
+
+      const productId = urlParams.get("id") || "product_1";
+
+      /* =========================================================
+   LOAD PRODUCT JSON
+========================================================= */
+
+      async function loadProduct() {
+        try {
+          console.log("Loading product...");
+
+          console.log("Product ID:", productId);
+
+          /* =========================
+       LOAD JSON
+    ========================= */
+
+          const response = await fetch("../flash_product.json");
+
+          console.log("JSON response status:", response.status);
+
+          if (!response.ok) {
+            throw new Error(
+              `flash_product.json load হয়নি। HTTP Status: ${response.status}`,
+            );
+          }
+
+          /* =========================
+       CONVERT TO JSON
+    ========================= */
+
+          const data = await response.json();
+
+          console.log("JSON loaded:", data);
+
+          /* =========================
+       CHECK PRODUCTS
+    ========================= */
+
+          if (!data.products || !Array.isArray(data.products)) {
+            throw new Error('JSON-এর মধ্যে "products" array পাওয়া যায়নি।');
+          }
+
+          /* =========================
+       FIND PRODUCT
+    ========================= */
+
+          product = data.products.find((item) => item.id === productId);
+
+          /* =========================
+       PRODUCT NOT FOUND
+    ========================= */
+
+          if (!product) {
+            throw new Error(`Product ID "${productId}" পাওয়া যায়নি।`);
+          }
+
+          /* =========================
+       DEFAULT QUANTITY
+    ========================= */
+
+          quantity = product.quantity?.default || 1;
+
+          /* =========================
+       RENDER
+    ========================= */
+
+          renderProduct();
+
+          /* =========================
+       EVENTS
+    ========================= */
+
+          setupProductEvents();
+
+          console.log("Product loaded successfully:", product);
+        } catch (error) {
+          console.error("PRODUCT LOAD ERROR:", error);
+
+          document.getElementById("productContainer").innerHTML = `
+
+      <div class="error">
+
+        <h3>
+          Product load করতে সমস্যা হয়েছে।
+        </h3>
+
+        <small>
+          ${error.message}
+        </small>
+
+      </div>
+
+    `;
         }
-      };
+      }
 
-      /* SIZE */
-      document.querySelectorAll(".size").forEach((button) => {
-        button.addEventListener("click", function () {
-          document
-            .querySelectorAll(".size")
-            .forEach((btn) => btn.classList.remove("active"));
+      /* =========================================================
+   RENDER PRODUCT
+========================================================= */
 
-          this.classList.add("active");
-        });
-      });
+      function renderProduct() {
+        const container = document.getElementById("productContainer");
 
-      /* COLOR */
-      document.querySelectorAll(".color").forEach((button) => {
-        button.addEventListener("click", function () {
-          document
-            .querySelectorAll(".color")
-            .forEach((btn) => btn.classList.remove("active"));
+        /* =======================================================
+     SALE
+  ======================================================= */
 
-          this.classList.add("active");
-        });
-      });
+        let saleHTML = "";
 
-      /* FAVORITE */
-      document.getElementById("favorite").onclick = function () {
-        if (this.textContent === "♡") {
-          this.textContent = "♥";
-          this.style.color = "#ff4d6d";
-        } else {
-          this.textContent = "♡";
-          this.style.color = "#222";
+        if (product.sale && product.sale.enabled) {
+          saleHTML = `
+
+      <div class="sale">
+
+        -${product.sale.discount}%
+
+      </div>
+
+    `;
         }
-      };
 
-      /* OPEN ORDER */
+        /* =======================================================
+     RATING
+  ======================================================= */
+
+        const ratingStars = Number(product.rating?.stars || 0);
+
+        const stars = "★".repeat(ratingStars) + "☆".repeat(5 - ratingStars);
+
+        /* =======================================================
+     INFO BOXES
+  ======================================================= */
+
+        const infoItems = [
+          {
+            icon: "🚚",
+            title: product.delivery?.title || "Delivery",
+            description: product.delivery?.description || "",
+          },
+
+          {
+            icon: "💵",
+            title: product.payment?.title || "Payment",
+            description: product.payment?.description || "",
+          },
+
+          {
+            icon: "🔄",
+            title: product.return?.title || "Return",
+            description: product.return?.description || "",
+          },
+
+          {
+            icon: "🛡️",
+            title: product.quality?.title || "Quality",
+            description: product.quality?.description || "",
+          },
+        ];
+
+        const infoHTML = infoItems
+          .map(
+            (item) => `
+
+        <div class="info-box">
+
+          <strong>
+            ${item.icon}
+            ${item.title}
+          </strong>
+
+          <br>
+
+          ${item.description}
+
+        </div>
+
+      `,
+          )
+          .join("");
+
+        /* =======================================================
+     FEATURES
+  ======================================================= */
+
+        const features = product.fullDescription?.features || [];
+
+        const featuresHTML = features
+          .map(
+            (feature) => `
+
+        <li>
+          ${feature}
+        </li>
+
+      `,
+          )
+          .join("");
+
+        /* =======================================================
+     PRICE
+  ======================================================= */
+
+        const currency = product.price?.currency || "৳";
+
+        const currentPrice = Number(product.price?.current || 0);
+
+        const oldPrice = Number(product.price?.old || 0);
+
+        /* =======================================================
+     STOCK
+  ======================================================= */
+
+        const stockPercentage = Number(product.stock?.percentage || 0);
+
+        /* =======================================================
+     PRODUCT HTML
+  ======================================================= */
+
+        container.innerHTML = `
+
+    <section class="product">
+
+
+      <!-- PRODUCT IMAGE -->
+
+      <div class="product-image">
+
+        ${saleHTML}
+
+
+        <button
+          class="favorite"
+          id="favorite"
+          type="button"
+        >
+          ♡
+        </button>
+
+
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+        >
+
+      </div>
+
+
+      <!-- PRODUCT DETAILS -->
+
+      <div class="details">
+
+
+        <!-- CATEGORY -->
+
+        <div class="category">
+          ${product.category}
+        </div>
+
+
+        <!-- TITLE -->
+
+        <h1 class="title">
+          ${product.name}
+        </h1>
+
+
+        <!-- RATING -->
+
+        <div class="rating">
+
+          <span class="stars">
+            ${stars}
+          </span>
+
+          <span class="reviews">
+            (${product.rating?.reviews || 0} Reviews)
+          </span>
+
+        </div>
+
+
+        <!-- PRICE -->
+
+        <div class="price">
+
+          <span class="current-price">
+
+            ${currency}${currentPrice.toLocaleString()}
+
+          </span>
+
+
+          <span class="old-price">
+
+            ${currency}${oldPrice.toLocaleString()}
+
+          </span>
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <p class="description">
+
+          ${product.description || ""}
+
+        </p>
+
+
+        <!-- QUANTITY + ORDER -->
+
+        <div class="buy-row">
+
+
+          <div class="quantity">
+
+            <button
+              id="minus"
+              type="button"
+            >
+              −
+            </button>
+
+
+            <span id="quantity">
+              ${quantity}
+            </span>
+
+
+            <button
+              id="plus"
+              type="button"
+            >
+              +
+            </button>
+
+          </div>
+
+
+          <button
+            class="order-btn"
+            id="orderBtn"
+            type="button"
+          >
+            🛒 এখনই অর্ডার করুন
+          </button>
+
+
+        </div>
+
+
+        <!-- INFO -->
+
+        <div class="info">
+
+          ${infoHTML}
+
+        </div>
+
+
+        <!-- STOCK -->
+
+        <div class="stock">
+
+          <span>
+            ${product.stock?.message || ""}
+          </span>
+
+
+          <span>
+            ${stockPercentage}%
+          </span>
+
+        </div>
+
+
+        <div class="progress">
+
+          <span
+            style="width:${stockPercentage}%"
+          ></span>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- FULL DESCRIPTION -->
+
+    <section class="long-description">
+
+
+      <h2>
+        ${product.fullDescription?.title || "প্রোডাক্টের বিস্তারিত বিবরণ"}
+      </h2>
+
+
+      <p>
+        ${product.fullDescription?.description || ""}
+      </p>
+
+
+      <ul>
+        ${featuresHTML}
+      </ul>
+
+
+    </section>
+
+  `;
+
+        /* =======================================================
+     BREADCRUMB
+  ======================================================= */
+
+        document.getElementById("breadcrumbProduct").textContent = product.name;
+
+        /* =======================================================
+     PAGE TITLE
+  ======================================================= */
+
+        document.title = `${product.name} | Craft Tech BD`;
+      }
+
+      /* =========================================================
+   PRODUCT EVENTS
+========================================================= */
+
+      function setupProductEvents() {
+        /* =========================
+     QUANTITY
+  ========================= */
+
+        const quantityEl = document.getElementById("quantity");
+
+        const plus = document.getElementById("plus");
+
+        const minus = document.getElementById("minus");
+
+        /* =========================
+     PLUS
+  ========================= */
+
+        plus.addEventListener("click", function () {
+          const maximum = Number(product.quantity?.maximum || 10);
+
+          if (quantity < maximum) {
+            quantity++;
+
+            quantityEl.textContent = quantity;
+          }
+        });
+
+        /* =========================
+     MINUS
+  ========================= */
+
+        minus.addEventListener("click", function () {
+          const minimum = Number(product.quantity?.minimum || 1);
+
+          if (quantity > minimum) {
+            quantity--;
+
+            quantityEl.textContent = quantity;
+          }
+        });
+
+        /* =========================
+     FAVORITE
+  ========================= */
+
+        const favorite = document.getElementById("favorite");
+
+        favorite.addEventListener("click", function () {
+          if (this.textContent.trim() === "♡") {
+            this.textContent = "♥";
+
+            this.style.color = "#ff4d6d";
+          } else {
+            this.textContent = "♡";
+
+            this.style.color = "#222";
+          }
+        });
+
+        /* =========================
+     ORDER BUTTON
+  ========================= */
+
+        const orderButton = document.getElementById("orderBtn");
+
+        orderButton.addEventListener("click", openModal);
+      }
+
+      /* =========================================================
+   MODAL
+========================================================= */
+
       const modal = document.getElementById("modal");
 
-      document.getElementById("orderBtn").onclick = function () {
+      function openModal() {
         modal.classList.add("show");
+
         document.body.style.overflow = "hidden";
-      };
 
-      /* CLOSE ORDER */
-      document.getElementById("close").onclick = closeModal;
+        document.getElementById("selectedProduct").textContent =
+          `${product.name} — ` +
+          `${product.price.currency}` +
+          `${product.price.current.toLocaleString()}` +
+          ` × ${quantity}`;
+      }
 
-      modal.addEventListener("click", function (e) {
-        if (e.target === modal) {
+      function closeModal() {
+        modal.classList.remove("show");
+
+        document.body.style.overflow = "";
+      }
+
+      /* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+      document.getElementById("close").addEventListener("click", closeModal);
+
+      /* =========================================================
+   CLICK OUTSIDE MODAL
+========================================================= */
+
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
           closeModal();
         }
       });
 
-      function closeModal() {
-        modal.classList.remove("show");
-        document.body.style.overflow = "";
-      }
+      /* =========================================================
+   ORDER SUBMIT
+========================================================= */
 
-      /* ORDER SUBMIT */
       document
         .getElementById("orderForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
 
-          // ==============================
-          // FORM DATA
-          // ==============================
+          /* =========================
+       CUSTOMER DATA
+    ========================= */
 
-          const name = document
-            .querySelector('#orderForm input[type="text"]')
-            .value.trim();
+          const name = document.getElementById("customerName").value.trim();
 
-          const phone = document
-            .querySelector('#orderForm input[type="tel"]')
-            .value.trim();
+          const phone = document.getElementById("customerPhone").value.trim();
 
           const address = document
-            .querySelector("#orderForm textarea")
+            .getElementById("customerAddress")
             .value.trim();
 
-          const payment = document.querySelector("#orderForm select").value;
+          const payment = document.getElementById("paymentMethod").value;
 
-          // ==============================
-          // PRODUCT DATA
-          // ==============================
+          /* =========================
+       PRODUCT DATA
+    ========================= */
 
-          const product = "Premium Casual T-Shirt";
-          const price = 899;
+          const productName = product.name;
+
+          const price = Number(product.price.current);
+
+          const currency = product.price.currency;
+
           const total = price * quantity;
 
-          // ==============================
-          // GOOGLE APPS SCRIPT URL
-          // ==============================
-
-          const googleScriptURL =
-            "https://script.google.com/macros/s/AKfycbx1vJEF_32j92GWe9pamuZVRSvs2bi_m422c9ELrhivrzd391kohAriVlULxvSK26Qt/exec";
-
-          // ==============================
-          // SEND DATA TO GOOGLE SHEET
-          // ==============================
+          /* =========================
+       FORM DATA
+    ========================= */
 
           const formData = new URLSearchParams();
 
           formData.append("name", name);
+
           formData.append("phone", phone);
+
           formData.append("address", address);
+
           formData.append("payment", payment);
-          formData.append("product", product);
+
+          formData.append("product", productName);
+
+          formData.append("productId", product.id);
+
           formData.append("quantity", quantity);
+
           formData.append("price", price);
+
           formData.append("total", total);
 
-          fetch(googleScriptURL, {
-            method: "POST",
-            body: formData,
-            mode: "no-cors",
-          })
-            .then(() => {
-              console.log("Order data sent to Google Sheet");
+          /* =========================
+       SEND GOOGLE SHEET
+    ========================= */
 
-              // ==============================
-              // WHATSAPP
-              // ==============================
+          try {
+            await fetch(googleScriptURL, {
+              method: "POST",
 
-              const whatsappNumber = "8801609278822";
+              body: formData,
 
-              const message = `🛒 নতুন অর্ডার
+              mode: "no-cors",
+            });
 
-📦 Product: ${product}
+            console.log("Order sent to Google Sheet");
+
+            /* =========================
+         WHATSAPP MESSAGE
+      ========================= */
+
+            const message = `🛒 নতুন অর্ডার
+
+📦 Product: ${productName}
+🆔 Product ID: ${product.id}
+
 🔢 Quantity: ${quantity}
-💰 Price: ৳${price}
-💵 Total: ৳${total}
+
+💰 Price: ${currency}${price.toLocaleString()}
+
+💵 Total: ${currency}${total.toLocaleString()}
 
 👤 নাম: ${name}
+
 📱 মোবাইল: ${phone}
+
 📍 ঠিকানা: ${address}
 
 💳 Payment Method: ${payment}`;
 
-              // WhatsApp URL
-              const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            /* =========================
+         WHATSAPP URL
+      ========================= */
 
-              // WhatsApp open
-              window.open(whatsappURL, "_blank");
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-              // ==============================
-              // SUCCESS MESSAGE
-              // ==============================
+            /* =========================
+         OPEN WHATSAPP
+      ========================= */
 
-              document.getElementById("formArea").style.display = "none";
-              document.getElementById("success").style.display = "block";
-            })
-            .catch((error) => {
-              console.error("Google Sheet Error:", error);
+            window.open(whatsappURL, "_blank");
 
-              alert(
-                "অর্ডার পাঠাতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।",
-              );
-            });
+            /* =========================
+         SUCCESS
+      ========================= */
+
+            document.getElementById("formArea").style.display = "none";
+
+            document.getElementById("success").style.display = "block";
+          } catch (error) {
+            console.error("Order Error:", error);
+
+            alert("অর্ডার পাঠাতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।");
+          }
         });
+
+      /* =========================================================
+   START APPLICATION
+========================================================= */
+
+      loadProduct();
     </script>
   </body>
 </html>
