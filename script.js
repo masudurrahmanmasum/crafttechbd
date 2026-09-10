@@ -1103,3 +1103,53 @@ init();
 // local storage data wishlist and cart by reloading browser 
 localStorage.removeItem("shopnest-cart");
 localStorage.removeItem("shopnest-wishlist");
+
+
+// ================================
+// Dark THEME
+// ================================
+const themeToggle = document.getElementById("themeToggle");
+
+const icon = themeToggle.querySelector("i");
+
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+
+    document.body.classList.add("dark");
+
+    icon.classList.remove("fa-moon");
+    icon.classList.add("fa-sun");
+}
+
+
+// ================================
+// TOGGLE THEME
+// ================================
+
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+
+    // Dark Mode
+    if (document.body.classList.contains("dark")) {
+
+        localStorage.setItem("theme", "dark");
+
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+
+    }
+
+
+    // Light Mode
+    else {
+
+        localStorage.setItem("theme", "light");
+
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+    }
+
+});

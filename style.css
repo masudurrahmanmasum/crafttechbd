@@ -14,10 +14,19 @@ html {
 
 body {
   font-family: "Poppins", "Anek Bangla", sans-serif;
-  background: #ffffff;
-  color: #171717;
   line-height: 1.6;
   overflow-x: hidden;
+  background: #ffffff;
+  color: #222222;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+body.dark {
+  --bg: #1a1c1d;
+  --card-bg: #242629;
+  --text: #ffffff;
 }
 
 img {
@@ -154,6 +163,143 @@ ul {
 /* =====================================================
    HEADER
 ===================================================== */
+
+/* Dark theme style */
+.theme-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: #eeeeee;
+  color: #222;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s ease;
+  margin-top: -5px;
+}
+.theme-btn:hover {
+  transform: rotate(15deg);
+}
+
+body.dark {
+  background: #1a1c1d;
+  color: #ffffff;
+}
+
+/* Navbar */
+
+body.dark .header {
+  background: #1a1c1d;
+  border-color: #333333;
+  color: #ffffff;
+}
+
+i.dark {
+  color: #ffffff;
+}
+
+/* Theme Button */
+
+body.dark .theme-btn,
+#hero {
+  background: var(--bg);
+  color: var(--text);
+}
+body.dark body {
+  background: var(--bg);
+  color: var(--text);
+}
+body.dark .about {
+  background: var(--bg);
+  color: var(--text);
+}
+body.dark .flash-sale-header h2 {
+  color: var(--text);
+}
+body.dark .flash-product-card {
+  background: var(--card-bg);
+  color: var(--text);
+}
+body.dark .product-card{
+  background: var(--card-bg);
+  color: var(--text);
+}
+body.dark .product-card h3{
+  color: var(--text);
+}
+body.dark .flash-product-card h3 {
+  color: var(--text);
+}
+body.dark .product-image {
+  background: none;
+}
+body.dark .footer {
+  background-color: var(--bg);
+}
+body.dark .search-overlay {
+  background-color: var(--bg);
+}
+body.dark .floating-card {
+  background-color: var(--card-bg);
+}
+body.dark .sale-countdown-wrapper {
+  background-color: var(--card-bg);
+}
+body.dark .notice-item {
+  color: var(--text);
+}
+body.dark .search-box {
+  background-color: var(--card-bg);
+}
+body.dark .newsletter-box {
+  background: #242629;
+  border: 1px solid #303338;
+  border-radius: 24px;
+
+  border: 1px solid #34373b;
+  border-radius: 24px;
+
+  /* Plate / recessed 3D effect */
+  background: #242629;
+  border: 1px solid #303338;
+  border-radius: 24px;
+
+  /* 3D Shadow */
+  box-shadow:
+    0 8px 15px rgba(0, 0, 0, 0.5),
+    0 20px -1px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgb(255 255 255 / 0%);
+
+  transition: all 0.4s ease;
+}
+
+body.dark .products{
+  background-color: var(--bg);
+}
+body.dark .hero_dark{
+  background-color: var(--bg) !important;
+}
+body.dark .flash-sale{
+  background-color: var(--bg);
+}
+body.dark .fa-solid, .fa-regular{
+  color: var(--text);
+}
+
+body.dark .category-card {
+background: #242629;
+    border: 1px solid #303338;
+    border-radius: 24px;
+    color: #ffffff;
+    /* 3D Shadow */
+    box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.25),
+        0 20px 40px rgba(0, 0, 0, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    transition: all 0.4s ease;
+}
+/* Dark theme style end*/
 
 .header {
   position: fixed;
@@ -519,7 +665,7 @@ ul {
 .hero {
   padding-top: 130px;
   min-height: 730px;
-  background: linear-gradient(135deg, #f6f4ff, #ffffff);
+  background: #ffffff;
 }
 
 .hero-container {
@@ -1127,7 +1273,7 @@ ul {
 
 .countdown-title {
   color: #777;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -1158,13 +1304,13 @@ ul {
 .time-box span {
   font-size: 22px;
   font-weight: 800;
-  color: var(--primary);
+  color: var(--secondary);
   line-height: 1;
 }
 
 .time-box small {
   margin-top: 5px;
-  font-size: 9px;
+  font-size: 12px;
   color: #777;
 }
 
