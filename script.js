@@ -979,21 +979,7 @@ function showToast(message) {
   }, 2500);
 }
 
-/* =====================================================
-   NEWSLETTER
-===================================================== */
 
-newsletterForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const email = document.getElementById("emailInput").value.trim();
-
-  if (!email) return;
-
-  showToast("Successfully subscribed!");
-
-  newsletterForm.reset();
-});
 
 /* =====================================================
    MOBILE MENU
@@ -1152,4 +1138,21 @@ themeToggle.addEventListener("click", () => {
         icon.classList.add("fa-moon");
     }
 
+});
+
+// User email message send script
+
+newsletterForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const message = document.getElementById("emailMsg").value.trim();
+
+    if (!message) return;
+
+    const email = "crafttechbd@gmail.com";
+
+    window.location.href =
+        `mailto:${email}?subject=New Message&body=${encodeURIComponent(message)}`;
+
+    newsletterForm.reset();
 });

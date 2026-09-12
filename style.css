@@ -107,6 +107,9 @@ ul {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.promo{
+  margin-top: -80px;
+}
 
 .section-heading h2 {
   font-size: 38px;
@@ -1712,6 +1715,10 @@ background: #242629;
   gap: 8px;
 
   transition: all 0.3s ease;
+}
+
+.details_btn{
+  margin-top: 10px;
 }
 
 .sale-cart-btn:hover {
