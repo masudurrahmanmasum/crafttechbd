@@ -1636,7 +1636,7 @@ background: #242629;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .fizzy-btn {
@@ -1786,9 +1786,7 @@ background: #242629;
 }
 
 @media (max-width: 500px) {
-  .fizzy-wrap {
-    padding: 40px 15px;
-  }
+
   .fizzy-btn {
     width: 180px;
   }
@@ -3712,6 +3710,15 @@ background: #242629;
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .hero_btn {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+.fizzy-wrap{
+  margin-left: 0;
+}
+
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -3728,7 +3735,7 @@ background: #242629;
     text-align: center;
   }
   .top_mg {
-    margin-top: -50px;
+    margin-top: -20px;
   }
 
   .hero-content p {
@@ -3932,3 +3939,7 @@ background: #242629;
 /* =====================================================
    REDUCED MOTION
 ===================================================== */
+
+
+
+/* bug fixing cosde */
