@@ -1156,3 +1156,432 @@ newsletterForm.addEventListener("submit", function (event) {
 
     newsletterForm.reset();
 });
+
+
+/* ==================================================
+   CRAFT TECH BD CHATBOT
+================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const chatHead =
+        document.getElementById("ctChatHead");
+
+    const chatWindow =
+        document.getElementById("ctChatWindow");
+
+    const closeChat =
+        document.getElementById("ctCloseChat");
+
+    const resetChat =
+        document.getElementById("ctResetChat");
+
+    const notification =
+        document.getElementById("ctNotification");
+
+    const chatBody =
+        document.getElementById("ctChatBody");
+
+    const quickQuestions =
+        document.getElementById("ctQuickQuestions");
+
+    const typingMessage =
+        document.getElementById("ctTypingMessage");
+
+
+    /* ==================================================
+       BOT ANSWERS
+    ================================================== */
+
+    const botAnswers = {
+
+        product: `
+            <p>আমাদের ওয়েবসাইটে বিভিন্ন ধরনের
+            পণ্য পাওয়া যায়। 🛍️</p>
+
+            <p>যেমন:</p>
+
+            <p>
+            👕 Men's Fashion<br>
+            👜 Bags & Accessories<br>
+            👟 Footwear<br>
+            ⌚ Watches<br>
+            এবং আরও অনেক পণ্য।
+            </p>
+        `,
+
+
+        price: `
+            <p>
+            প্রতিটি পণ্যের বর্তমান দাম
+            Product Card-এর মধ্যেই দেওয়া থাকে। 💰
+            </p>
+
+            <p>
+            কোনো পণ্যের বিস্তারিত জানতে
+            <strong>View Details</strong>
+            অথবা Product Card-এ ক্লিক করুন।
+            </p>
+        `,
+
+
+        delivery: `
+            <p>
+            🚚 আমরা সারা বাংলাদেশে
+            Delivery দিয়ে থাকি।
+            </p>
+
+            <p>
+            Delivery charge আপনার
+            location অনুযায়ী পরিবর্তিত হতে পারে।
+            </p>
+        `,
+
+
+        cod: `
+            <p>
+            💵 হ্যাঁ, আমাদের
+            <strong>Cash on Delivery</strong>
+            সুবিধা রয়েছে।
+            </p>
+
+            <p>
+            অর্ডার করার সময় Payment Method
+            থেকে Cash on Delivery নির্বাচন করতে পারবেন।
+            </p>
+        `,
+
+
+        order: `
+            <p>
+            🛒 অর্ডার করা খুব সহজ।
+            </p>
+
+            <p>
+            1️⃣ পছন্দের Product নির্বাচন করুন।<br>
+            2️⃣ <strong>Order Now</strong> চাপুন।<br>
+            3️⃣ আপনার নাম, ফোন ও ঠিকানা দিন।<br>
+            4️⃣ Confirm Order করুন।
+            </p>
+        `,
+
+
+        return: `
+            <p>
+            🔄 আমাদের Return / Exchange policy
+            পণ্যের ধরন অনুযায়ী প্রযোজ্য হতে পারে।
+            </p>
+
+            <p>
+            বিস্তারিত জানতে আমাদের
+            Customer Support-এর সাথে যোগাযোগ করুন।
+            </p>
+        `,
+
+
+        payment: `
+            <p>
+            💳 আমরা বিভিন্ন Payment Method
+            support করতে পারি।
+            </p>
+
+            <p>
+            যেমন:
+            Cash on Delivery,
+            bKash,
+            Nagad ইত্যাদি।
+            </p>
+        `,
+
+
+        contact: `
+            <p>
+            📞 আমাদের সাথে যোগাযোগ করতে
+            ওয়েবসাইটের <strong>যোগাযোগ</strong>
+            section ব্যবহার করুন।
+            </p>
+
+            <p>
+            আপনার প্রয়োজনীয় তথ্য দিয়ে
+            আমরা আপনাকে সাহায্য করার চেষ্টা করব।
+            </p>
+        `
+
+    };
+
+
+    /* ==================================================
+       OPEN CHAT
+    ================================================== */
+
+    chatHead.addEventListener("click", () => {
+
+        chatWindow.classList.add("ct-open");
+
+        notification.style.display = "none";
+
+        setTimeout(() => {
+
+            chatBody.scrollTop =
+                chatBody.scrollHeight;
+
+        }, 100);
+
+    });
+
+
+    /* ==================================================
+       CLOSE CHAT
+    ================================================== */
+
+    closeChat.addEventListener("click", () => {
+
+        chatWindow.classList.remove("ct-open");
+
+    });
+
+
+    /* ==================================================
+       CREATE USER MESSAGE
+    ================================================== */
+
+    function addUserMessage(text) {
+
+        const message =
+            document.createElement("div");
+
+        message.className =
+            "ct-message ct-user-message";
+
+
+        message.innerHTML = `
+
+            <div class="ct-message-content">
+
+                <div class="ct-message-bubble">
+
+                    <p>${text}</p>
+
+                </div>
+
+                <span class="ct-message-time">
+                    Just now
+                </span>
+
+            </div>
+
+        `;
+
+
+        chatBody.insertBefore(
+            message,
+            typingMessage
+        );
+
+
+        scrollChat();
+
+    }
+
+
+    /* ==================================================
+       CREATE BOT MESSAGE
+    ================================================== */
+
+    function addBotMessage(answer) {
+
+        const message =
+            document.createElement("div");
+
+        message.className =
+            "ct-message ct-bot-message";
+
+
+        message.innerHTML = `
+
+            <div class="ct-message-avatar">
+                🤖
+            </div>
+
+            <div class="ct-message-content">
+
+                <div class="ct-message-bubble">
+                    ${answer}
+                </div>
+
+                <span class="ct-message-time">
+                    Just now
+                </span>
+
+            </div>
+
+        `;
+
+
+        chatBody.insertBefore(
+            message,
+            typingMessage
+        );
+
+
+        scrollChat();
+
+    }
+
+
+    /* ==================================================
+       SHOW TYPING
+    ================================================== */
+
+    function showTyping() {
+
+        typingMessage.style.display = "flex";
+
+        scrollChat();
+
+    }
+
+
+    /* ==================================================
+       HIDE TYPING
+    ================================================== */
+
+    function hideTyping() {
+
+        typingMessage.style.display = "none";
+
+    }
+
+
+    /* ==================================================
+       SCROLL
+    ================================================== */
+
+    function scrollChat() {
+
+        setTimeout(() => {
+
+            chatBody.scrollTo({
+
+                top: chatBody.scrollHeight,
+
+                behavior: "smooth"
+
+            });
+
+        }, 50);
+
+    }
+
+
+    /* ==================================================
+       QUICK QUESTIONS
+    ================================================== */
+
+    quickQuestions
+        .addEventListener("click", (event) => {
+
+            const button =
+                event.target.closest("button");
+
+
+            if (!button) return;
+
+
+            const questionType =
+                button.dataset.question;
+
+
+            const questionText =
+                button.textContent.trim();
+
+
+            const answer =
+                botAnswers[questionType];
+
+
+            if (!answer) return;
+
+
+            /* User message */
+
+            addUserMessage(questionText);
+
+
+            /* Disable buttons temporarily */
+
+            const buttons =
+                quickQuestions.querySelectorAll("button");
+
+
+            buttons.forEach(btn => {
+
+                btn.disabled = true;
+
+                btn.style.opacity = "0.5";
+
+            });
+
+
+            /* Bot typing */
+
+            setTimeout(() => {
+
+                showTyping();
+
+            }, 250);
+
+
+            /* Bot response */
+
+            setTimeout(() => {
+
+                hideTyping();
+
+                addBotMessage(answer);
+
+
+                buttons.forEach(btn => {
+
+                    btn.disabled = false;
+
+                    btn.style.opacity = "1";
+
+                });
+
+
+            }, 1100);
+
+        });
+
+
+    /* ==================================================
+       RESET CHAT
+    ================================================== */
+
+    resetChat.addEventListener("click", () => {
+
+        const messages =
+            chatBody.querySelectorAll(
+                ".ct-message:not(.ct-typing-message)"
+            );
+
+
+        messages.forEach((message, index) => {
+
+            /* Keep first welcome message */
+
+            if (index > 0) {
+                message.remove();
+            }
+
+        });
+
+
+        scrollChat();
+
+    });
+
+
+});
+
