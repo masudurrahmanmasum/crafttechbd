@@ -2634,13 +2634,6 @@ background: #242629;
   margin-top: 10px;
 }
 
-.sale-cart-btn:hover {
-  background: var(--primary-dark);
-
-  transform: translateY(-2px);
-
-  box-shadow: 0 8px 20px rgba(108, 77, 246, 0.25);
-}
 
 .sale-cart-btn:active {
   transform: scale(0.97);
@@ -3031,7 +3024,6 @@ background: #242629;
 }
 
 .add-cart {
-  width: 40px;
   height: 40px;
 
   border: none;
@@ -3044,11 +3036,8 @@ background: #242629;
 
   transition: var(--transition);
 }
-
-.add-cart:hover {
-  background: var(--primary-dark);
-
-  transform: rotate(5deg) scale(1.05);
+.add-cart-small{
+  width: 40px;
 }
 
 /* =====================================================
