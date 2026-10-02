@@ -3889,8 +3889,7 @@ background: #242629;
   .hero-circle {
     width: 220px;
     height: 220px;
-
-    right: -20px;
+    right: 0px;
   }
 
   .floating-card {
