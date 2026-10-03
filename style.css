@@ -757,7 +757,7 @@ i.dark {
 
 .ct-message-bubble {
 
-    background: white;
+    /* background: white; */
 
     border: 1px solid #eeeef5;
 
@@ -1216,6 +1216,22 @@ background: #242629;
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
     transition: all 0.4s ease;
+}
+body.dark .ct-message-bubble {
+    background-color: var(--card-bg) !important;
+    border: 1px solid #303338;
+}
+body.dark .ct-quick-questions button{
+    background-color: var(--card-bg) !important;
+    border: 1px solid #303338;
+    color:#ffffff;
+}
+body.dark .ct-chat-footer{
+    background: linear-gradient(135deg, #7455f7, #6040e9);
+    color:#ffffff;
+}
+body.dark #ctChatBody {
+    background: var(--bg) !important;
 }
 /* Dark theme style end*/
 
