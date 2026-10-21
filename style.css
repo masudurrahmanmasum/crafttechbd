@@ -204,6 +204,10 @@ i.dark {
 
 /* ai chat bot style */ 
 
+.some_width{
+  width: 50px;
+}
+
 /* ==================================================
    MAIN CHATBOT
 ================================================== */
@@ -1169,6 +1173,13 @@ body.dark .notice-item {
 body.dark .search-box {
   background-color: var(--card-bg);
 }
+body.dark .po-card-body{
+  background-color: var(--card-bg);
+  
+}
+body.dark .po-card{
+  border: var(--bg);
+}
 body.dark .newsletter-box {
   background: #242629;
   border: 1px solid #303338;
@@ -1906,156 +1917,6 @@ body.dark #ctChatBody {
 /* =====================================================
    FLASH SALE
 ===================================================== */
-/* =========================================
-   FLASH SALE SECTION
-========================================= */
-
-:root {
-  --primary: #6c4df6;
-  --primary-dark: #5034d4;
-  --secondary: #ff6b6b;
-  --sale-bg: #f8f7ff;
-  --text-dark: #171717;
-  --text-light: #777;
-}
-
-/* Main Section */
-
-.flash-sale {
-  position: relative;
-  overflow: hidden;
-  padding: 90px 0;
-  background: var(--sale-bg);
-}
-
-/* Container */
-
-.flash-sale .container {
-  width: 86%;
-  max-width: 1250px;
-  margin: auto;
-  position: relative;
-  z-index: 2;
-}
-
-/* extra flash sale product */
-
-/* =========================
-   EXTRA FLASH SALE PRODUCTS
-========================= */
-
-.extra-products {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-
-  transform: translateY(80px);
-
-  transition:
-    max-height 1s ease,
-    opacity 0.7s ease,
-    transform 0.8s ease;
-
-  margin-top: 0;
-}
-
-/* Show Animation */
-
-.extra-products.show {
-  max-height: 1200px;
-  opacity: 1;
-  transform: translateY(0);
-
-  margin-top: 30px;
-}
-
-/* Individual card animation */
-
-.extra-card {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: 0.7s ease;
-}
-
-.extra-products.show .extra-card {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Delay animation */
-
-.extra-products.show .extra-card:nth-child(1) {
-  transition-delay: 0.1s;
-}
-
-.extra-products.show .extra-card:nth-child(2) {
-  transition-delay: 0.2s;
-}
-
-.extra-products.show .extra-card:nth-child(3) {
-  transition-delay: 0.3s;
-}
-
-.extra-products.show .extra-card:nth-child(4) {
-  transition-delay: 0.4s;
-}
-
-/* View Button */
-
-.view-btn-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 45px;
-}
-
-#viewFlashBtn {
-  padding: 15px 32px;
-
-  border: 1px solid #6c4df6;
-  background: transparent;
-
-  color: #6848f5;
-
-  border-radius: 12px;
-
-  font-size: 16px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.3s;
-}
-
-#viewFlashBtn:hover {
-  background: #6848f5;
-  color: white;
-}
-
-#viewFlashBtn span {
-  margin-left: 8px;
-}
-
-/* Responsive */
-
-@media (max-width: 1100px) {
-  .extra-products {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .extra-products {
-    grid-template-columns: 1fr;
-  }
-
-  #viewFlashBtn {
-    width: 90%;
-  }
-}
 
 /* =========================================
    BACKGROUND DECORATION
@@ -2081,7 +1942,7 @@ body.dark #ctChatBody {
   width: 220px;
   height: 220px;
   background: rgba(255, 107, 107, 0.07);
-  right: -60px;
+  right: 0px;
   bottom: -80px;
   animation: floatingShape 8s ease-in-out infinite reverse;
 }
@@ -2115,6 +1976,568 @@ body.dark #ctChatBody {
     transform: rotate(360deg);
   }
 }
+
+
+/* =========================================
+   flash sale product 
+========================================= */
+
+
+.po-section,
+.po-section * {
+  box-sizing: border-box;
+}
+
+.po-section {
+  --purple: #6848ff;
+  --coral: #ff666c;
+
+  width: 100%;
+  padding: 6px clamp(12px, 3.8vw, 60px) 28px;
+
+  color: #272727;
+  font-family: "Hind Siliguri", sans-serif;
+}
+
+/* ========================================
+   PRODUCT GRID
+======================================== */
+
+.po-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+/* ========================================
+   PRODUCT CARD
+======================================== */
+
+.po-card {
+  min-width: 0;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #fff;
+  border: 1px solid #eae7f3;
+  border-radius: 22px;
+
+  box-shadow: 0 8px 26px rgba(54, 34, 120, 0.05);
+
+  animation: poEnter 0.35s ease both;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.po-card:hover {
+  box-shadow: 0 14px 34px rgba(54, 34, 120, 0.12);
+}
+
+@keyframes poEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   PRODUCT IMAGE
+======================================== */
+
+.po-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.14 / 1;
+  overflow: hidden;
+  background: #f0eff3;
+}
+
+.po-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: transform 0.35s ease;
+}
+
+.po-card:hover .po-card-image {
+  transform: scale(1.035);
+}
+
+/* ========================================
+   DISCOUNT BADGE
+======================================== */
+
+.po-discount {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+
+  min-width: 60px;
+  padding: 10px 9px;
+
+  background: var(--coral);
+  color: #fff;
+  border-radius: 11px;
+
+  text-align: center;
+  font: 700 12px Poppins, sans-serif;
+
+  box-shadow: 0 5px 14px rgba(255, 102, 108, 0.2);
+}
+
+/* ========================================
+   WISHLIST BUTTON
+======================================== */
+
+.po-wish {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #fff;
+  color: #292929;
+
+  font-size: 23px;
+  cursor: pointer;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.po-wish:hover {
+  transform: scale(1.08);
+}
+
+.po-wish.is-active {
+  color: #ff5964;
+}
+
+/* ========================================
+   QUICK VIEW BUTTON
+======================================== */
+
+.po-quick {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  z-index: 3;
+
+  transform: translate(-50%, 10px);
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 24px;
+
+  background: #fff0b8;
+  color: var(--purple);
+
+  font: 600 13px Poppins, sans-serif;
+  white-space: nowrap;
+
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.po-card:hover .po-quick,
+.po-quick:focus-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ========================================
+   PRODUCT DETAILS
+======================================== */
+
+.po-card-body {
+  padding: 22px 23px 20px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.po-category {
+  margin: 0 0 12px;
+
+  color: #6043ff;
+  font: 500 10px Poppins, sans-serif;
+}
+
+.po-name {
+  margin: 0 0 10px;
+
+  font: 700 17px/1.4 "Hind Siliguri", sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.po-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.po-stars {
+  color: #ff9700;
+  font: 16px Poppins, sans-serif;
+  letter-spacing: -1.5px;
+}
+
+.po-review {
+  color: #999;
+  font: 10px Poppins, sans-serif;
+}
+
+/* ========================================
+   PRODUCT PRICE
+======================================== */
+
+.po-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 17px;
+}
+
+.po-price {
+  color: var(--purple);
+  font: 700 22px Poppins, sans-serif;
+}
+
+.po-old-price {
+  color: #aaa;
+  text-decoration: line-through;
+  font: 600 12px Poppins, sans-serif;
+}
+
+/* ========================================
+   STOCK PROGRESS
+======================================== */
+
+.po-stock-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  font-size: 10px;
+  margin-bottom: 7px;
+}
+
+.po-stock-label {
+  color: var(--coral);
+}
+
+.po-stock-percent {
+  color: #555;
+  font: 10px Poppins, sans-serif;
+}
+
+.po-stock-track {
+  height: 6px;
+  overflow: hidden;
+
+  border-radius: 20px;
+  background: #ececec;
+
+  margin-bottom: 18px;
+}
+
+.po-stock-fill {
+  height: 100%;
+  border-radius: inherit;
+
+  background: linear-gradient(90deg, #7657ff, #9b85ff);
+}
+
+/* ========================================
+   ACTION BUTTONS
+======================================== */
+
+.po-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.po-action-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+
+  width: 100%;
+  min-height: 47px;
+  padding: 10px 12px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: var(--purple);
+  color: #fff;
+
+  font: 600 14px "Hind Siliguri", sans-serif;
+
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.po-action-btn:hover {
+  background: #5635ed;
+  transform: translateY(-1px);
+}
+
+.po-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ========================================
+   LOAD MORE BUTTON
+======================================== */
+
+.po-more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  min-height: 70px;
+  min-width: 274px;
+
+  margin: 50px auto 0;
+  padding: 16px 30px;
+
+  border: 1.5px solid var(--purple);
+  border-radius: 15px;
+
+  background: transparent;
+  color: var(--purple);
+
+  font: 500 17px "Hind Siliguri", sans-serif;
+
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.po-more-btn:hover {
+  background: var(--purple);
+  color: #fff;
+}
+
+/* ========================================
+   STATUS & LOADING
+======================================== */
+
+.po-status {
+  min-height: 20px;
+  margin: 8px 0 0;
+
+  text-align: center;
+  color: #555;
+  font-size: 13px;
+}
+
+.po-loading {
+  grid-column: 1 / -1;
+  padding: 30px;
+  text-align: center;
+}
+
+/* ========================================
+   PRODUCT MODAL
+======================================== */
+
+.po-modal {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+.po-modal.is-open {
+  display: flex;
+}
+
+.po-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 12, 28, 0.62);
+}
+
+.po-modal-panel {
+  position: relative;
+  z-index: 1;
+
+  width: min(760px, 100%);
+  max-height: 88vh;
+  overflow: auto;
+
+  padding: 26px;
+
+  background: #fff;
+  border-radius: 20px;
+
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+}
+
+.po-modal-close {
+  display: block;
+  margin-left: auto;
+
+  width: 38px;
+  height: 38px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f1eff8;
+
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.po-modal-product {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.po-modal-product img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.po-modal-product h3 {
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.po-modal-product p {
+  line-height: 1.7;
+}
+
+.po-modal-stock {
+  color: #666;
+  font-size: 13px;
+}
+
+/* ========================================
+   TABLET RESPONSIVE
+======================================== */
+
+@media (max-width: 1100px) {
+  .po-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .po-card-body {
+    padding: 18px;
+  }
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+======================================== */
+
+@media (max-width: 760px) {
+  .po-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .po-section {
+    padding-inline: 12px;
+  }
+
+  .po-card {
+    border-radius: 16px;
+  }
+
+  .po-card-media {
+    aspect-ratio: 0.95 / 1;
+  }
+
+  .po-discount {
+    top: 9px;
+    left: 9px;
+
+    min-width: 49px;
+    padding: 8px 6px;
+
+    font-size: 10px;
+  }
+
+  .po-wish {
+    top: 9px;
+    right: 9px;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 19px;
+  }
+
+  .po-quick {
+    opacity: 1;
+    transform: translate(-50%, 0);
+
+    padding: 8px 13px;
+    font-size: 11px;
+  }
+
+  .po-card-body {
+    padding: 13px 12px 14px;
+  }
+
+  .po-category {
+    font-size: 9px;
+    margin-bottom: 8px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* =========================================
    HEADER
@@ -2281,34 +2704,557 @@ body.dark #ctChatBody {
   gap: 20px;
 }
 
-/* =========================================
-   PRODUCT CARD
-========================================= */
 
-.flash-product-card {
-  position: relative;
 
-  background: #ffffff;
+/* flash sale product grid style */
 
-  border: 1px solid #eeeeee;
 
-  border-radius: 18px;
+.po-section,
+.po-section * {
+  box-sizing: border-box;
+}
 
+.po-section {
+  --purple: #6848ff;
+  --coral: #ff666c;
+
+  width: 100%;
+  padding: 6px clamp(12px, 3.8vw, 60px) 28px;
+
+  color: #272727;
+  font-family: "Hind Siliguri", sans-serif;
+}
+
+.po-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.po-card {
+  min-width: 0;
   overflow: hidden;
 
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
+  display: flex;
+  flex-direction: column;
+
+  background: #fff;
+  border: 1px solid #eae7f3;
+  border-radius: 22px;
+
+  box-shadow: 0 8px 26px rgba(54, 34, 120, 0.05);
+
+  animation: poEnter 0.35s ease both;
 }
 
-.flash-product-card:hover {
-  transform: translateY(-8px);
+@keyframes poEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
 
-  border-color: rgba(108, 77, 246, 0.25);
-
-  box-shadow: 0 18px 45px rgba(67, 45, 150, 0.13);
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+.po-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.14 / 1;
+  overflow: hidden;
+  background: #f0eff3;
+}
+
+.po-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.po-card:hover .po-card-image {
+  transh {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #292929;
+
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.po-wish.is-active {
+  color: #ff5964;
+}
+
+.po-quick {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translate(-50%, 10px);
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 24px;
+
+  background: #fff0b8;
+  color: var(--purple);
+
+  font: 600 13px Poppins, sans-serif;
+  white-space: nowrap;
+
+  opacity: 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.po-card:hover .po-quick,
+.po-quick:focus-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.po-card-body {
+  padding: 22px 23px 20px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.po-category {
+  margin: 0 0 12px;
+
+  color: #6043ff;
+  font: 500 10px Poppins, sans-serif;
+}
+
+.po-name {
+  margin: 0 0 10px;
+
+  font: 700 17px/1.4 "Hind Siliguri", sans-serif;
+  overflow-wrap: anywhere;
+}
+
+.po-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.po-stars {
+  color: #ff9700;
+  font: 16px Poppins, sans-serif;
+  letter-spacing: -1.5px;
+}
+
+.po-review {
+  color: #999;
+  font: 10px Poppins, sans-serif;
+}
+
+.po-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 17px;
+}
+
+.po-price {
+  color: var(--purple);
+  font: 700 22px Poppins, sans-serif;
+}
+
+.po-old-price {
+  color: #aaa;
+  text-decoration: line-through;
+  font: 600 12px Poppins, sans-serif;
+}
+
+.po-stock-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  font-size: 10px;
+  margin-bottom: 7px;
+}
+
+.po-stock-label {
+  color: #ff666c;
+}
+
+.po-stock-percent {
+  color: #555;
+  font: 10px Poppins, sans-serif;
+}
+
+.po-stock-track {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #ececec;
+  margin-bottom: 18px;
+}
+
+.po-stock-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #7657ff, #9b85ff);
+}
+
+.po-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.po-action-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+
+  width: 100%;
+  min-height: 47px;
+  padding: 10px 12px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: var(--purple);
+  color: #fff;
+
+  font: 600 14px "Hind Siliguri", sans-serif;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.po-action-btn:hover {
+  background: #5635ed;
+  transform: translateY(-1px);
+}
+
+.po-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.po-more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  min-height: 70px;
+  min-width: 274px;
+
+  margin: 50px auto 0;
+  padding: 16px 30px;
+
+  border: 1.5px solid var(--purple);
+  border-radius: 15px;
+
+  background: transparent;
+  color: var(--purple);
+
+  font: 500 17px "Hind Siliguri", sans-serif;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.po-more-btn:hover {
+  background: var(--purple);
+  color: #fff;
+}
+
+.po-status {
+  min-height: 20px;
+  margin: 8px 0 0;
+  text-align: center;
+  color: #555;
+  font-size: 13px;
+}
+
+.po-loading {
+  grid-column: 1 / -1;
+  padding: 30px;
+  text-align: center;
+}
+
+.po-modal {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+.po-modal.is-open {
+  display: flex;
+}
+
+.po-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 12, 28, 0.62);
+}
+
+.po-modal-panel {
+  position: relative;
+  z-index: 1;
+
+  width: min(760px, 100%);
+  max-height: 88vh;
+  overflow: auto;
+
+  padding: 26px;
+
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 25px 80px #0003;
+}
+
+.po-modal-close {
+  display: block;
+  margin-left: auto;
+
+  width: 38px;
+  height: 38px;
+
+  border: none;
+  border-radius: 50%;
+  background: #f1eff8;
+
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.po-modal-product {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.po-modal-product img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.po-modal-product h3 {
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.po-modal-product p {
+  line-height: 1.7;
+}
+
+.po-modal-stock {
+  color: #666;
+  font-size: 13px;
+}
+
+@media (max-width: 1100px) {
+  .po-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .po-card-body {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 760px) {
+  .po-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .po-section {
+    padding-inline: 12px;
+  }
+
+  .po-card {
+    border-radius: 16px;
+  }
+
+  .po-card-media {
+    aspect-ratio: 0.95 / 1;
+  }
+
+  .po-discount {
+    top: 9px;
+    left: 9px;
+    min-width: 49px;
+    padding: 8px 6px;
+    font-size: 10px;
+  }
+
+  .po-wish {
+    top: 9px;
+    right: 9px;
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+  }
+
+  .po-quick {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    padding: 8px 13px;
+    font-size: 11px;
+  }
+
+  .po-card-body {
+    padding: 13px 12px 14px;
+  }
+
+  .po-category {
+    font-size: 9px;
+    margin-bottom: 8px;
+  }
+
+  .po-name {
+    font-size: 14px;
+  }
+
+  .po-rating {
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .po-stars {
+    font-size: 13px;
+  }
+
+  .po-price {
+    font-size: 17px;
+  }
+
+  .po-old-price {
+    font-size: 10px;
+  }
+
+  .po-price-row {
+    gap: 7px;
+    margin-bottom: 13px;
+  }
+
+  .po-action-btn {
+    min-height: 42px;
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  .po-stock-head {
+    font-size: 9px;
+  }
+
+  .po-stock-track {
+    margin-bottom: 13px;
+  }
+
+  .po-actions {
+    gap: 8px;
+  }
+
+  .po-more-btn {
+    min-width: 0;
+    min-height: 58px;
+    margin-top: 28px;
+    padding: 12px 22px;
+    font-size: 15px;
+  }
+
+  .po-modal-product {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .po-modal-product img {
+    max-height: 280px;
+  }
+
+  .po-modal-panel {
+    padding: 17px;
+  }
+
+  .po-modal-product h3 {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .po-card,
+  .po-card-image,
+  .po-quick,
+  .po-action-btn,
+  .po-more-btn {
+    animation: none;
+    transition: none;
+  }
+}sform: scale(1.035);
+}
+
+.po-discount {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+
+  min-width: 60px;
+  padding: 10px 9px;
+
+  background: var(--coral);
+  color: #fff;
+  border-radius: 11px;
+
+  text-align: center;
+  font: 700 12px Poppins, sans-serif;
+
+  box-shadow: 0 5px 14px #ff666c35;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* =========================================
    IMAGE
@@ -3041,6 +3987,21 @@ body.dark #ctChatBody {
 
 .add-cart {
   height: 40px;
+
+  border: none;
+
+  background: var(--primary);
+
+  color: white;
+
+  border-radius: 10px;
+
+  transition: var(--transition);
+}
+.add_cart{
+  height: 40px;
+
+  width: 50px;
 
   border: none;
 
@@ -3947,3 +4908,24 @@ body.dark #ctChatBody {
 
 
 /* bug fixing cosde */
+
+
+
+.go_middle{
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

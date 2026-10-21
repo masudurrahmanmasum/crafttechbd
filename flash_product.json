@@ -1,76 +1,132 @@
 {
   "products": [
     {
-      "id": "product_1",
+      "id": 1,
       "name": "Premium Casual T-Shirt",
       "category": "MEN'S FASHION",
-
-      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=85",
-
-      "sale": {
-        "enabled": true,
-        "discount": 40
-      },
-
-      "rating": {
-        "stars": 5,
-        "reviews": 24
-      },
-
-      "price": {
-        "current": 899,
-        "old": 1499,
-        "currency": "৳"
-      },
-
-      "description": "Premium Casual T-Shirt আপনার প্রতিদিনের ব্যবহার, অফিস, ঘুরতে যাওয়া কিংবা casual outing-এর জন্য একটি আরামদায়ক ও স্টাইলিশ পোশাক। উন্নতমানের ফেব্রিক এবং modern fit-এর কারণে এটি দীর্ঘ সময় পরেও comfortable থাকে।",
-
-      "quantity": {
-        "minimum": 1,
-        "maximum": 10,
-        "default": 1
-      },
-
-      "delivery": {
-        "title": "Delivery",
-        "description": "সারা বাংলাদেশ"
-      },
-
-      "payment": {
-        "title": "Payment",
-        "description": "Cash on Delivery"
-      },
-
-      "return": {
-        "title": "Return",
-        "description": "৭ দিনের Return"
-      },
-
-      "quality": {
-        "title": "Quality",
-        "description": "Premium Quality"
-      },
-
-      "stock": {
-        "status": "limited",
-        "message": "স্টক সীমিত!",
-        "percentage": 78
-      },
-
-      "fullDescription": {
-        "title": "প্রোডাক্টের বিস্তারিত বিবরণ",
-
-        "description": "Premium Casual T-Shirt তৈরি করা হয়েছে উন্নতমানের breathable cotton fabric দিয়ে। এর clean design এবং comfortable fitting আপনাকে দেবে smart এবং modern look। এটি দৈনন্দিন ব্যবহার, অফিসের casual day, বন্ধুদের সাথে outing অথবা ভ্রমণের জন্য উপযোগী।",
-
-        "features": [
-          "Premium quality cotton fabric",
-          "Soft, comfortable এবং breathable material",
-          "Regular / modern fit",
-          "সহজে ধোয়া এবং maintenance করা যায়",
-          "দৈনন্দিন ব্যবহারের জন্য উপযোগী",
-          "নরসিংদী সদরের ভিতর Cash on Delivery"
-        ]
-      }
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85",
+      "price": 899,
+      "oldPrice": 1499,
+      "discount": 40,
+      "rating": 4.8,
+      "reviews": 24,
+      "soldPercent": 80,
+      "shortDescription": "আরামদায়ক কটন ফেব্রিকের প্রিমিয়াম ক্যাজুয়াল টি-শার্ট।",
+      "stock": 12,
+      "enabled": true,
+      "link": "flash_sale/flash_product1.html?id=1"
+    },
+    {
+      "id": 2,
+      "name": "Premium Leather Bag",
+      "category": "BAGS & ACCESSORIES",
+      "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85",
+      "price": 1690,
+      "oldPrice": 2600,
+      "discount": 35,
+      "rating": 4.7,
+      "reviews": 18,
+      "soldPercent": 65,
+      "shortDescription": "স্টাইলিশ ডিজাইনের প্রিমিয়াম ব্যাগ।",
+      "stock": 8,
+      "enabled": true,
+      "link": "flash_sale/flash_product1.html?id=2"
+    },
+    {
+      "id": 3,
+      "name": "Premium Casual Sunglasses",
+      "category": "EYEWEAR",
+      "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=85",
+      "price": 1250,
+      "oldPrice": 2500,
+      "discount": 50,
+      "rating": 4.9,
+      "reviews": 31,
+      "soldPercent": 90,
+      "shortDescription": "আধুনিক ফ্রেমের স্টাইলিশ সানগ্লাস।",
+      "stock": 5,
+      "enabled": true,
+      "link": "flash_sale/flash_product1.html?id=3"
+    },
+    {
+      "id": 4,
+      "name": "Classic Premium Watch",
+      "category": "ACCESSORIES",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85",
+      "price": 2100,
+      "oldPrice": 3000,
+      "discount": 30,
+      "rating": 4.6,
+      "reviews": 16,
+      "soldPercent": 75,
+      "shortDescription": "সিম্পল ও এলিগ্যান্ট ডিজাইনের ঘড়ি।",
+      "stock": 9,
+      "enabled": true,
+      "link": "flash_sale/flash_product1.html?id=4"
+    },
+    {
+      "id": 5,
+      "name": "Wireless Bluetooth Headphones",
+      "category": "ELECTRONICS",
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85",
+      "price": 1890,
+      "oldPrice": 2990,
+      "discount": 37,
+      "rating": 4.7,
+      "reviews": 22,
+      "soldPercent": 68,
+      "shortDescription": "ওয়্যারলেস গান শোনা ও কলের জন্য হেডফোন।",
+      "stock": 14,
+      "enabled": true,
+      "link": "flash_sale/flash_product1.html?id=5"
+    },
+    {
+      "id": 6,
+      "name": "Everyday Sneakers",
+      "category": "FOOTWEAR",
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85",
+      "price": 2250,
+      "oldPrice": 3200,
+      "discount": 30,
+      "rating": 4.8,
+      "reviews": 27,
+      "soldPercent": 72,
+      "shortDescription": "দৈনন্দিন ব্যবহারের জন্য আরামদায়ক স্নিকার্স।",
+      "stock": 7,
+      "enabled": true,
+      "link": "flash_sale/flash_product1.html?id=6"
+    },
+    {
+      "id": 7,
+      "name": "Minimalist Backpack",
+      "category": "BAGS & ACCESSORIES",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85",
+      "price": 1450,
+      "oldPrice": 2200,
+      "discount": 34,
+      "rating": 4.5,
+      "reviews": 13,
+      "soldPercent": 58,
+      "shortDescription": "বই ও প্রয়োজনীয় জিনিস বহনের জন্য ব্যাকপ্যাক।",
+      "stock": 11,
+      "enabled": true,
+      "link": "flash_sale/flash_product1.html?id=7"
+    },
+    {
+      "id": 8,
+      "name": "Classic Frame Sunglasses",
+      "category": "ACCESSORIES",
+      "image": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=900&q=85",
+      "price": 990,
+      "oldPrice": 1650,
+      "discount": 40,
+      "rating": 4.6,
+      "reviews": 19,
+      "soldPercent": 61,
+      "shortDescription": "ক্লাসিক স্টাইলের হালকা ফ্রেমের সানগ্লাস।",
+      "stock": 10,
+      "enabled": true,
+      "link": "flash_sale/flash_product1.html?id=8"
     }
   ]
 }

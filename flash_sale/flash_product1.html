@@ -52,13 +52,12 @@
       }
 
       .logo {
-        .logo {
-          font-size: 25px;
-          font-weight: 800;
-        }
-        .logo img {
-          width: 12rem;
-        }
+        font-size: 25px;
+        font-weight: 800;
+      }
+      .logo img {
+        width: 12rem;
+        display: block;
       }
 
       .back {
@@ -686,703 +685,316 @@
   ========================= -->
 
     <script>
-      /* =========================================================
-   GLOBAL VARIABLES
-========================================================= */
+      "use strict";
 
       let product = null;
-
       let quantity = 1;
-
-      /* =========================================================
-   GOOGLE APPS SCRIPT URL
-========================================================= */
 
       const googleScriptURL =
         "https://script.google.com/macros/s/AKfycbx1vJEF_32j92GWe9pamuZVRSvs2bi_m422c9ELrhivrzd391kohAriVlULxvSK26Qt/exec";
-
-      /* =========================================================
-   WHATSAPP NUMBER
-========================================================= */
-
       const whatsappNumber = "8801609278822";
-
-      /* =========================================================
-   PRODUCT ID FROM URL
-=========================================================
-
-Example:
-
-index.html?id=product_1
-
-========================================================= */
-
       const urlParams = new URLSearchParams(window.location.search);
-
-      const productId = urlParams.get("id") || "product_1";
-
-      /* =========================================================
-   LOAD PRODUCT JSON
-========================================================= */
+      const productId = urlParams.get("id") || "1";
+      const money = (value) => Number(value || 0).toLocaleString("en-BD");
+      const safeText = (value, fallback = "") =>
+        value == null ? fallback : String(value);
 
       async function loadProduct() {
+        const container = document.getElementById("productContainer");
         try {
-          console.log("Loading product...");
-
-          console.log("Product ID:", productId);
-
-          /* =========================
-       LOAD JSON
-    ========================= */
-
-          const response = await fetch("../flash_product.json");
-
+          console.log("Loading product...", "Product ID:", productId);
+          const response = await fetch("../flash_product.json", {
+            cache: "no-store",
+          });
           console.log("JSON response status:", response.status);
-
-          if (!response.ok) {
+          if (!response.ok)
             throw new Error(
-              `flash_product.json load হয়নি। HTTP Status: ${response.status}`,
+              `flash_product.json লোড হয়নি (HTTP ${response.status})`,
             );
-          }
-
-          /* =========================
-       CONVERT TO JSON
-    ========================= */
 
           const data = await response.json();
-
-          console.log("JSON loaded:", data);
-
-          /* =========================
-       CHECK PRODUCTS
-    ========================= */
-
-          if (!data.products || !Array.isArray(data.products)) {
-            throw new Error('JSON-এর মধ্যে "products" array পাওয়া যায়নি।');
+          if (!data || !Array.isArray(data.products)) {
+            throw new Error('JSON ফাইলে "products" নামে array পাওয়া যায়নি।');
           }
 
-          /* =========================
-       FIND PRODUCT
-    ========================= */
-
-          product = data.products.find((item) => item.id === productId);
-
-          /* =========================
-       PRODUCT NOT FOUND
-    ========================= */
-
-          if (!product) {
+          product = data.products.find(
+            (item) => String(item.id) === String(productId),
+          );
+          if (!product)
             throw new Error(`Product ID "${productId}" পাওয়া যায়নি।`);
-          }
+          if (product.enabled === false)
+            throw new Error("এই প্রোডাক্টটি বর্তমানে বন্ধ আছে।");
 
-          /* =========================
-       DEFAULT QUANTITY
-    ========================= */
-
-          quantity = product.quantity?.default || 1;
-
-          /* =========================
-       RENDER
-    ========================= */
-
+          quantity = Math.max(1, Number(product.quantity?.default || 1));
           renderProduct();
-
-          /* =========================
-       EVENTS
-    ========================= */
-
           setupProductEvents();
-
           console.log("Product loaded successfully:", product);
         } catch (error) {
           console.error("PRODUCT LOAD ERROR:", error);
-
-          document.getElementById("productContainer").innerHTML = `
-
-      <div class="error">
-
-        <h3>
-          Product load করতে সমস্যা হয়েছে।
-        </h3>
-
-        <small>
-          ${error.message}
-        </small>
-
-      </div>
-
-    `;
+          container.innerHTML = `<div class="error" style="padding:24px;color:#b42318"><h3>প্রোডাক্ট লোড করতে সমস্যা হয়েছে</h3><p>${safeText(error.message, "অজানা সমস্যা")}</p><p>JSON ফাইলের path এবং Product ID পরীক্ষা করুন।</p></div>`;
         }
       }
 
-      /* =========================================================
-   RENDER PRODUCT
-========================================================= */
-
       function renderProduct() {
         const container = document.getElementById("productContainer");
-
-        /* =======================================================
-     SALE
-  ======================================================= */
-
-        let saleHTML = "";
-
-        if (product.sale && product.sale.enabled) {
-          saleHTML = `
-
-      <div class="sale">
-
-        -${product.sale.discount}%
-
-      </div>
-
-    `;
-        }
-
-        /* =======================================================
-     RATING
-  ======================================================= */
-
-        const ratingStars = Number(product.rating?.stars || 0);
-
-        const stars = "★".repeat(ratingStars) + "☆".repeat(5 - ratingStars);
-
-        /* =======================================================
-     INFO BOXES
-  ======================================================= */
+        const name = safeText(product.name, "Product");
+        const category = safeText(product.category, "PRODUCT");
+        const currency = safeText(product.price?.currency, "৳");
+        // JSON schema is flat: price, oldPrice, discount, rating, reviews, shortDescription, stock, soldPercent.
+        const currentPrice =
+          Number(
+            typeof product.price === "object"
+              ? product.price?.current
+              : product.price,
+          ) || 0;
+        const oldPrice =
+          Number(
+            typeof product.oldPrice === "object"
+              ? product.oldPrice?.old
+              : product.oldPrice,
+          ) || 0;
+        const discount =
+          Number(product.discount ?? product.sale?.discount ?? 0) || 0;
+        const ratingValue =
+          Number(
+            typeof product.rating === "object"
+              ? product.rating?.stars
+              : product.rating,
+          ) || 0;
+        const reviews =
+          Number(product.reviews ?? product.rating?.reviews ?? 0) || 0;
+        const shortDescription = safeText(
+          product.shortDescription || product.description,
+          "এই প্রোডাক্টের বিস্তারিত শিগগিরই যোগ করা হবে।",
+        );
+        const stockCount = Number(
+          typeof product.stock === "object"
+            ? product.stock?.quantity
+            : product.stock,
+        );
+        const soldPercent = Math.max(
+          0,
+          Math.min(
+            100,
+            Number(product.soldPercent ?? product.stock?.percentage ?? 0) || 0,
+          ),
+        );
+        const stockMessage =
+          product.stock?.message ||
+          (Number.isFinite(stockCount)
+            ? stockCount > 0
+              ? `স্টকে আছে: ${stockCount} টি`
+              : "স্টক শেষ"
+            : "স্টক সীমিত");
+        const saleEnabled =
+          product.enabled !== false &&
+          (product.sale?.enabled ?? discount > 0) &&
+          discount > 0;
+        const saleHTML = saleEnabled
+          ? `<div class="sale">-${discount}%</div>`
+          : "";
+        const clampedRating = Math.max(0, Math.min(5, Math.round(ratingValue)));
+        const stars = "★".repeat(clampedRating) + "☆".repeat(5 - clampedRating);
 
         const infoItems = [
           {
             icon: "🚚",
-            title: product.delivery?.title || "Delivery",
-            description: product.delivery?.description || "",
+            title: product.delivery?.title || "ডেলিভারি",
+            description:
+              product.delivery?.description || "সারা বাংলাদেশে ডেলিভারি সুবিধা",
           },
-
           {
             icon: "💵",
-            title: product.payment?.title || "Payment",
-            description: product.payment?.description || "",
+            title: product.payment?.title || "পেমেন্ট",
+            description:
+              product.payment?.description || "ক্যাশ অন ডেলিভারি সুবিধা",
           },
-
           {
             icon: "🔄",
-            title: product.return?.title || "Return",
-            description: product.return?.description || "",
+            title: product.return?.title || "রিটার্ন",
+            description:
+              product.return?.description ||
+              "রিটার্ন নীতিমালা জানতে যোগাযোগ করুন",
           },
-
           {
             icon: "🛡️",
-            title: product.quality?.title || "Quality",
-            description: product.quality?.description || "",
+            title: product.quality?.title || "কোয়ালিটি",
+            description: product.quality?.description || "মানসম্মত পণ্য",
           },
         ];
-
         const infoHTML = infoItems
           .map(
-            (item) => `
-
-        <div class="info-box">
-
-          <strong>
-            ${item.icon}
-            ${item.title}
-          </strong>
-
-          <br>
-
-          ${item.description}
-
-        </div>
-
-      `,
+            (item) =>
+              `<div class="info-box"><strong>${item.icon} ${safeText(item.title)}</strong><br>${safeText(item.description)}</div>`,
           )
           .join("");
 
-        /* =======================================================
-     FEATURES
-  ======================================================= */
-
-        const features = product.fullDescription?.features || [];
-
+        const full = product.fullDescription || {};
+        const longDescription = safeText(
+          full.description || product.longDescription || shortDescription,
+        );
+        const features = Array.isArray(full.features)
+          ? full.features
+          : Array.isArray(product.features)
+            ? product.features
+            : [];
         const featuresHTML = features
-          .map(
-            (feature) => `
-
-        <li>
-          ${feature}
-        </li>
-
-      `,
-          )
+          .map((feature) => `<li>${safeText(feature)}</li>`)
           .join("");
-
-        /* =======================================================
-     PRICE
-  ======================================================= */
-
-        const currency = product.price?.currency || "৳";
-
-        const currentPrice = Number(product.price?.current || 0);
-
-        const oldPrice = Number(product.price?.old || 0);
-
-        /* =======================================================
-     STOCK
-  ======================================================= */
-
-        const stockPercentage = Number(product.stock?.percentage || 0);
-
-        /* =======================================================
-     PRODUCT HTML
-  ======================================================= */
+        const oldPriceHTML =
+          oldPrice > currentPrice
+            ? `<span class="old-price">${currency}${money(oldPrice)}</span>`
+            : "";
 
         container.innerHTML = `
-
-    <section class="product">
-
-
-      <!-- PRODUCT IMAGE -->
-
-      <div class="product-image">
-
-        ${saleHTML}
-
-
-        <button
-          class="favorite"
-          id="favorite"
-          type="button"
-        >
-          ♡
-        </button>
-
-
-        <img
-          src="${product.image}"
-          alt="${product.name}"
-        >
-
-      </div>
-
-
-      <!-- PRODUCT DETAILS -->
-
-      <div class="details">
-
-
-        <!-- CATEGORY -->
-
-        <div class="category">
-          ${product.category}
+      <section class="product">
+        <div class="product-image">
+          ${saleHTML}
+          <button class="favorite" id="favorite" type="button" aria-label="পছন্দের তালিকায় যোগ করুন">♡</button>
+          <img src="${safeText(product.image)}" alt="${name}" onerror="this.onerror=null;this.src='https://placehold.co/700x700?text=Product+Image';">
         </div>
-
-
-        <!-- TITLE -->
-
-        <h1 class="title">
-          ${product.name}
-        </h1>
-
-
-        <!-- RATING -->
-
-        <div class="rating">
-
-          <span class="stars">
-            ${stars}
-          </span>
-
-          <span class="reviews">
-            (${product.rating?.reviews || 0} Reviews)
-          </span>
-
-        </div>
-
-
-        <!-- PRICE -->
-
-        <div class="price">
-
-          <span class="current-price">
-
-            ${currency}${currentPrice.toLocaleString()}
-
-          </span>
-
-
-          <span class="old-price">
-
-            ${currency}${oldPrice.toLocaleString()}
-
-          </span>
-
-        </div>
-
-
-        <!-- DESCRIPTION -->
-
-        <p class="description">
-
-          ${product.description || ""}
-
-        </p>
-
-
-        <!-- QUANTITY + ORDER -->
-
-        <div class="buy-row">
-
-
-          <div class="quantity">
-
-            <button
-              id="minus"
-              type="button"
-            >
-              −
-            </button>
-
-
-            <span id="quantity">
-              ${quantity}
-            </span>
-
-
-            <button
-              id="plus"
-              type="button"
-            >
-              +
-            </button>
-
+        <div class="details">
+          <div class="category">${category}</div>
+          <h1 class="title">${name}</h1>
+          <div class="rating"><span class="stars">${stars}</span><span class="reviews">${ratingValue ? ratingValue.toFixed(1) : "0.0"} (${reviews} Reviews)</span></div>
+          <div class="price"><span class="current-price">${currency}${money(currentPrice)}</span>${oldPriceHTML}</div>
+          <p class="description">${shortDescription}</p>
+          <div class="buy-row">
+            <div class="quantity">
+              <button id="minus" type="button" aria-label="পরিমাণ কমান">−</button>
+              <span id="quantity">${quantity}</span>
+              <button id="plus" type="button" aria-label="পরিমাণ বাড়ান">+</button>
+            </div>
+            <button class="order-btn" id="orderBtn" type="button">🛒 এখনই অর্ডার করুন</button>
           </div>
-
-
-          <button
-            class="order-btn"
-            id="orderBtn"
-            type="button"
-          >
-            🛒 এখনই অর্ডার করুন
-          </button>
-
-
+          <div class="info">${infoHTML}</div>
+          <div class="stock"><span>${safeText(stockMessage)}</span><span>${soldPercent}% বিক্রি</span></div>
+          <div class="progress"><span style="width:${soldPercent}%"></span></div>
         </div>
+      </section>
+      <section class="long-description">
+        <h2>${safeText(full.title || "প্রোডাক্টের বিস্তারিত বিবরণ")}</h2>
+        <p>${longDescription}</p>
+        ${featuresHTML ? `<ul>${featuresHTML}</ul>` : ""}
+      </section>`;
 
-
-        <!-- INFO -->
-
-        <div class="info">
-
-          ${infoHTML}
-
-        </div>
-
-
-        <!-- STOCK -->
-
-        <div class="stock">
-
-          <span>
-            ${product.stock?.message || ""}
-          </span>
-
-
-          <span>
-            ${stockPercentage}%
-          </span>
-
-        </div>
-
-
-        <div class="progress">
-
-          <span
-            style="width:${stockPercentage}%"
-          ></span>
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- FULL DESCRIPTION -->
-
-    <section class="long-description">
-
-
-      <h2>
-        ${product.fullDescription?.title || "প্রোডাক্টের বিস্তারিত বিবরণ"}
-      </h2>
-
-
-      <p>
-        ${product.fullDescription?.description || ""}
-      </p>
-
-
-      <ul>
-        ${featuresHTML}
-      </ul>
-
-
-    </section>
-
-  `;
-
-        /* =======================================================
-     BREADCRUMB
-  ======================================================= */
-
-        document.getElementById("breadcrumbProduct").textContent = product.name;
-
-        /* =======================================================
-     PAGE TITLE
-  ======================================================= */
-
-        document.title = `${product.name} | Craft Tech BD`;
+        document.getElementById("breadcrumbProduct").textContent = name;
+        document.title = `${name} | Craft Tech BD`;
       }
-
-      /* =========================================================
-   PRODUCT EVENTS
-========================================================= */
 
       function setupProductEvents() {
-        /* =========================
-     QUANTITY
-  ========================= */
-
-        const quantityEl = document.getElementById("quantity");
-
-        const plus = document.getElementById("plus");
-
-        const minus = document.getElementById("minus");
-
-        /* =========================
-     PLUS
-  ========================= */
-
-        plus.addEventListener("click", function () {
+        document.getElementById("plus").addEventListener("click", () => {
           const maximum = Number(product.quantity?.maximum || 10);
-
-          if (quantity < maximum) {
+          const available =
+            typeof product.stock === "number"
+              ? product.stock
+              : Number(product.stock?.quantity);
+          const limit =
+            Number.isFinite(available) && available > 0
+              ? Math.min(maximum, available)
+              : maximum;
+          if (quantity < limit) {
             quantity++;
-
-            quantityEl.textContent = quantity;
+            document.getElementById("quantity").textContent = quantity;
           }
         });
-
-        /* =========================
-     MINUS
-  ========================= */
-
-        minus.addEventListener("click", function () {
+        document.getElementById("minus").addEventListener("click", () => {
           const minimum = Number(product.quantity?.minimum || 1);
-
           if (quantity > minimum) {
             quantity--;
-
-            quantityEl.textContent = quantity;
+            document.getElementById("quantity").textContent = quantity;
           }
         });
-
-        /* =========================
-     FAVORITE
-  ========================= */
-
-        const favorite = document.getElementById("favorite");
-
-        favorite.addEventListener("click", function () {
-          if (this.textContent.trim() === "♡") {
-            this.textContent = "♥";
-
-            this.style.color = "#ff4d6d";
-          } else {
-            this.textContent = "♡";
-
-            this.style.color = "#222";
-          }
-        });
-
-        /* =========================
-     ORDER BUTTON
-  ========================= */
-
-        const orderButton = document.getElementById("orderBtn");
-
-        orderButton.addEventListener("click", openModal);
+        document
+          .getElementById("favorite")
+          .addEventListener("click", function () {
+            const active = this.textContent.trim() === "♡";
+            this.textContent = active ? "♥" : "♡";
+            this.style.color = active ? "#ff4d6d" : "#222";
+          });
+        document
+          .getElementById("orderBtn")
+          .addEventListener("click", openModal);
       }
-
-      /* =========================================================
-   MODAL
-========================================================= */
 
       const modal = document.getElementById("modal");
-
       function openModal() {
+        if (!product) return;
         modal.classList.add("show");
-
         document.body.style.overflow = "hidden";
-
+        const price =
+          Number(
+            typeof product.price === "object"
+              ? product.price?.current
+              : product.price,
+          ) || 0;
         document.getElementById("selectedProduct").textContent =
-          `${product.name} — ` +
-          `${product.price.currency}` +
-          `${product.price.current.toLocaleString()}` +
-          ` × ${quantity}`;
+          `${product.name} — ৳${money(price)} × ${quantity} = ৳${money(price * quantity)}`;
       }
-
       function closeModal() {
         modal.classList.remove("show");
-
         document.body.style.overflow = "";
       }
-
-      /* =========================================================
-   CLOSE BUTTON
-========================================================= */
-
       document.getElementById("close").addEventListener("click", closeModal);
-
-      /* =========================================================
-   CLICK OUTSIDE MODAL
-========================================================= */
-
-      modal.addEventListener("click", function (event) {
-        if (event.target === modal) {
-          closeModal();
-        }
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
       });
-
-      /* =========================================================
-   ORDER SUBMIT
-========================================================= */
 
       document
         .getElementById("orderForm")
         .addEventListener("submit", async function (event) {
           event.preventDefault();
-
-          /* =========================
-       CUSTOMER DATA
-    ========================= */
-
+          if (!product) return;
           const name = document.getElementById("customerName").value.trim();
-
           const phone = document.getElementById("customerPhone").value.trim();
-
           const address = document
             .getElementById("customerAddress")
             .value.trim();
-
           const payment = document.getElementById("paymentMethod").value;
-
-          /* =========================
-       PRODUCT DATA
-    ========================= */
-
           const productName = product.name;
-
-          const price = Number(product.price.current);
-
-          const currency = product.price.currency;
-
+          const price =
+            Number(
+              typeof product.price === "object"
+                ? product.price?.current
+                : product.price,
+            ) || 0;
           const total = price * quantity;
-
-          /* =========================
-       FORM DATA
-    ========================= */
-
           const formData = new URLSearchParams();
-
           formData.append("name", name);
-
           formData.append("phone", phone);
-
           formData.append("address", address);
-
           formData.append("payment", payment);
-
           formData.append("product", productName);
-
           formData.append("productId", product.id);
-
           formData.append("quantity", quantity);
-
           formData.append("price", price);
-
           formData.append("total", total);
 
-          /* =========================
-       SEND GOOGLE SHEET
-    ========================= */
-
+          const submitButton = this.querySelector('[type="submit"]');
+          submitButton.disabled = true;
+          submitButton.textContent = "অর্ডার পাঠানো হচ্ছে...";
           try {
+            // no-cors means the browser cannot verify the Apps Script response; this preserves the existing endpoint workflow.
             await fetch(googleScriptURL, {
               method: "POST",
-
               body: formData,
-
               mode: "no-cors",
             });
-
-            console.log("Order sent to Google Sheet");
-
-            /* =========================
-         WHATSAPP MESSAGE
-      ========================= */
-
-            const message = `🛒 নতুন অর্ডার
-
-📦 Product: ${productName}
-🆔 Product ID: ${product.id}
-
-🔢 Quantity: ${quantity}
-
-💰 Price: ${currency}${price.toLocaleString()}
-
-💵 Total: ${currency}${total.toLocaleString()}
-
-👤 নাম: ${name}
-
-📱 মোবাইল: ${phone}
-
-📍 ঠিকানা: ${address}
-
-💳 Payment Method: ${payment}`;
-
-            /* =========================
-         WHATSAPP URL
-      ========================= */
-
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-            /* =========================
-         OPEN WHATSAPP
-      ========================= */
-
-            window.open(whatsappURL, "_blank");
-
-            /* =========================
-         SUCCESS
-      ========================= */
-
+            const message = `🛒 নতুন অর্ডার\n\n📦 Product: ${productName}\n🆔 Product ID: ${product.id}\n🔢 Quantity: ${quantity}\n💰 Price: ৳${money(price)}\n💵 Total: ৳${money(total)}\n👤 নাম: ${name}\n📱 মোবাইল: ${phone}\n📍 ঠিকানা: ${address}\n💳 Payment Method: ${payment}`;
+            window.open(
+              `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+              "_blank",
+            );
             document.getElementById("formArea").style.display = "none";
-
             document.getElementById("success").style.display = "block";
           } catch (error) {
             console.error("Order Error:", error);
-
             alert("অর্ডার পাঠাতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।");
+          } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "অর্ডার কনফার্ম করুন";
           }
         });
-
-      /* =========================================================
-   START APPLICATION
-========================================================= */
 
       loadProduct();
     </script>
